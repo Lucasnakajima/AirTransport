@@ -1,2 +1,8 @@
 .idea
-/cmake-build-debug
+/cmake-build-debug/cmake_install.cmake
+/cmake-build-debug/CMakeCache.txt
+/cmake-build-debug/CMakeFiles
+/cmake-build-debug/Testing
+/cmake-build-debug/AirTransport.cbp
+/cmake-build-debug/AirTransport.exe
+/cmake-build-debug/Makefile

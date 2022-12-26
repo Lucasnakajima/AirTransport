@@ -3,4 +3,4 @@ project(AirTransport)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AirTransport main.cpp)
+add_executable(AirTransport main.cpp Classes/Graph.cpp Classes/Graph.h Classes/Database.cpp Classes/Database.h Classes/Airport.cpp Classes/Airport.h)
