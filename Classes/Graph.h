@@ -37,7 +37,6 @@ public:
     // Depth-First Search: example implementation
     void dfs(int v);
     void dfsTopo(int v, list<int>& order);
-    // ----- Functions to implement in this class -----
     int outDegree(int v);
     int weightedOutDegree(int v);
     int connectedComponents();

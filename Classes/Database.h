@@ -8,10 +8,13 @@
 #include "Airline.h"
 #include <fstream>
 #include <vector>
+#include <unordered_set>
 #include "list"
 
 class Database {
 private:
+    //TODO
+    //unordered_set<Airport> airports;
     list<Airport> airports;
     list<Airline> airlines;
 

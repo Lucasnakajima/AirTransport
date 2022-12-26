@@ -5,6 +5,7 @@
 #ifndef AIRTRANSPORT_AIRPORT_H
 #define AIRTRANSPORT_AIRPORT_H
 #include <string>
+#include <cmath>
 using namespace std;
 ///Classe para os Aeroportos.
 ///
@@ -32,10 +33,31 @@ public:
     ///set Longitude with @param Longitude
     void setLongitude(float Longitude);
 
+    string getCode() const;
+    string getName();
+    string getCity();
+    string getCountry();
+    float getLatitude();
+    float getLongitude();
+
     int hashCode();
 
+    bool operator() (const Airport& a1, const Airport& a2) const;
+    bool operator==(const Airport& a1) const;
+
     Airport(string Code, string Name, string City, string Country, float Latitude, float Longitude);
+    Airport();
+};
+//TODO
+/*template<>
+struct hash<Airport>
+{
+    size_t operator()(const Airport & obj) const;
 };
 
+struct AirportHasher{
+    size_t operator() (const Airport & obj) const;
+};
+*/
 
 #endif //AIRTRANSPORT_AIRPORT_H
