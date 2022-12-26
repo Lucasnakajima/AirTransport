@@ -8,15 +8,15 @@
 using namespace std;
 ///Classe para os Aeroportos.
 ///
-///Um Aeroporto é identificado por um código.
+///Um Aeroporto é identificado por um código IATA.
 class Airport {
 private:
     string Code; /*!< Código do Aeroporto*/
-    string Name;
-    string City;
-    string Country;
-    float Latitude;
-    float Longitude;
+    string Name; /*!< Nome do Aeroporto*/
+    string City; /*!< Cidade do Aeroporto*/
+    string Country; /*!< País do Aeroporto*/
+    float Latitude; /*!< Latitude do Aeroporto*/
+    float Longitude; /*!< Longitude do Aeroporto*/
 
 public:
     ///set Code with @param Code
@@ -31,6 +31,8 @@ public:
     void setLatitude(float Latitude);
     ///set Longitude with @param Longitude
     void setLongitude(float Longitude);
+
+    int hashCode();
 
     Airport(string Code, string Name, string City, string Country, float Latitude, float Longitude);
 };

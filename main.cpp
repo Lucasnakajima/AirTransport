@@ -3,6 +3,5 @@
 using namespace std;
 int main() {
     Database database;
-    database.readAirports();
     return 0;
 }

@@ -36,3 +36,7 @@ Airport::Airport(string Code, string Name, string City, string Country, float La
     setLatitude(Latitude);
     setLongitude(Longitude);
 }
+
+int Airport::hashCode() {
+    return (Name.length()%10 + static_cast<int>(Latitude))%3020;
+}

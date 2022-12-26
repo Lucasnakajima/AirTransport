@@ -5,7 +5,10 @@
 #include <sstream>
 #include "Database.h"
 
-Database::Database() {}
+Database::Database() {
+    readAirports();
+    readAirlines();
+}
 
 void Database::readAirports() {
     fstream fin("airports.csv", ios::in);
@@ -25,5 +28,30 @@ void Database::readAirports() {
         }
     }
 
+}
+
+void Database::readAirlines() {
+    fstream fin("airlines.csv", ios::in);
+    vector<string> row;
+    string line, word, temp;
+    if(fin.is_open()){
+        getline(fin, line);
+        while(getline(fin, line)){
+            row.clear();
+            stringstream str(line);
+
+            while(getline(str, word, ',')) {
+                row.push_back(word);
+            }
+            if(row[2]=="_"){
+                Airline airline(row[0],row[1],row[3]);
+                airlines.push_back(airline);
+            }
+            else{
+                Airline airline(row[0],row[1],row[2],row[3]);
+                airlines.push_back(airline);
+            }
+        }
+    }
 }
 
