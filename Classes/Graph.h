@@ -7,6 +7,7 @@
 
 #include <list>
 #include <vector>
+#include <queue>
 #include <iostream>
 
 using namespace std;
@@ -21,18 +22,22 @@ class Graph {
         list<Edge> adj; // The list of outgoing edges (to adjacent nodes)
         bool visited;// As the node been visited on a search?
         int color;
+        int distance;
+        string code;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
     bool hasDir;        // false: undirected; true: directed
-    vector<Node> nodes; // The list of nodes being represented
 
 public:
+    vector<Node> nodes; // The list of nodes being represented
     // Constructor: nr nodes and direction (default: undirected)
     Graph(int nodes, bool dir = false);
 
+    Graph();
+
     // Add edge from source to destination with a certain weight
-    void addEdge(int src, int dest, int weight = 1);
+    void addEdge(string src, string dest, int weight = 1);
 
     // Depth-First Search: example implementation
     void dfs(int v);
@@ -46,6 +51,10 @@ public:
 
     int dfsGC(int v);
     void dfsCycle(int v, int& count);
+    void bfs(int v);
+    int maxbfs(int v);
+    int distance(string a, string b);
+    int diameter();
 };
 
 

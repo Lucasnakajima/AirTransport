@@ -8,9 +8,12 @@
 Database::Database() {
     readAirports();
     readAirlines();
+    graphEverything();
 }
 
 void Database::readAirports() {
+    Graph g(3019, true);
+    int i=1;
     fstream fin("airports.csv", ios::in);
     vector<string> row;
     string line, word, temp;
@@ -24,10 +27,12 @@ void Database::readAirports() {
                 row.push_back(word);
             }
             Airport airport(row[0], row[1], row[2], row[3], stof(row[4]), stof(row[5]));
+            g.nodes[i].code=row[0];
             airports.push_back(airport);
+            i++;
         }
     }
-
+    Everything = g;
 }
 
 void Database::readAirlines() {
@@ -51,6 +56,24 @@ void Database::readAirlines() {
                 Airline airline(row[0],row[1],row[2],row[3]);
                 airlines.push_back(airline);
             }
+        }
+    }
+}
+
+void Database::graphEverything() {
+    fstream fin("flights.csv", ios::in);
+    vector<string> row;
+    string line, word, temp;
+    if(fin.is_open()){
+        getline(fin, line);
+        while(getline(fin, line)){
+            row.clear();
+            stringstream str(line);
+
+            while(getline(str, word, ',')) {
+                row.push_back(word);
+            }
+            Everything.addEdge(row[0], row[1]);
         }
     }
 }

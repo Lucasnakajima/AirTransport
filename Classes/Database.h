@@ -6,6 +6,7 @@
 #define AIRTRANSPORT_DATABASE_H
 #include "Airport.h"
 #include "Airline.h"
+#include "Graph.h"
 #include <fstream>
 #include <vector>
 #include <unordered_set>
@@ -17,11 +18,13 @@ private:
     //unordered_set<Airport> airports;
     list<Airport> airports;
     list<Airline> airlines;
+    Graph Everything;
 
 public:
     void readAirports();
     void readAirlines();
     Database();
+    void graphEverything();
 };
 
 
