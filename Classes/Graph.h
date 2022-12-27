@@ -8,6 +8,8 @@
 #include <list>
 #include <vector>
 #include <queue>
+#include "Airport.h"
+#include "Airline.h"
 #include <iostream>
 
 using namespace std;
@@ -16,6 +18,7 @@ class Graph {
     struct Edge {
         int dest;   // Destination node
         int weight; // An integer weight
+        vector<string> Airlines;
     };
 
     struct Node {
@@ -23,7 +26,7 @@ class Graph {
         bool visited;// As the node been visited on a search?
         int color;
         int distance;
-        string code;
+        Airport airport;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -37,7 +40,7 @@ public:
     Graph();
 
     // Add edge from source to destination with a certain weight
-    void addEdge(string src, string dest, int weight = 1);
+    void addEdge(string src, string dest, string comp, int weight = 1);
 
     // Depth-First Search: example implementation
     void dfs(int v);

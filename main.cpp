@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Classes/Database.h"
+#include "Classes/Menu.h"
 using namespace std;
 int main() {
-    Database database;
+    Menu menu;
     return 0;
 }

@@ -13,19 +13,25 @@ Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
 }
 
 // Add edge from source to destination with a certain weight
-void Graph::addEdge(string src, string dest, int weight) {
-    int srcIndex=NULL, destIndex=NULL;
-    for(int i=0; i<nodes.size(); i++){
-        if(nodes[i].code==src)
+void Graph::addEdge(string src, string dest, string comp, int weight) {
+    int srcIndex=0, destIndex=0;
+    for(int i=1; i<nodes.size(); i++){
+        if(nodes[i].airport.getCode()==src)
             srcIndex = i;
-        if(nodes[i].code==dest)
+        if(nodes[i].airport.getCode()==dest)
             destIndex=i;
-        if(srcIndex!=NULL && destIndex!=NULL)
+        if(srcIndex!=0 && destIndex!=0)
             break;
     }
 
     if (srcIndex<1 || srcIndex>n || destIndex<1 || destIndex>n) return;
+    for(auto it=nodes[srcIndex].adj.begin(); it!=nodes[srcIndex].adj.end(); it++)
+        if(it->dest==destIndex) {
+            it->Airlines.push_back(comp);
+            return;
+        }
     nodes[srcIndex].adj.push_back({destIndex, weight});
+    nodes[srcIndex].adj.back().Airlines.push_back(comp);
     if (!hasDir) nodes[destIndex].adj.push_back({srcIndex, weight});
 }
 
@@ -211,12 +217,14 @@ int Graph::maxbfs(int v) {
 }
 
 int Graph::distance(string a, string b) {
-    int srcIndex, destIndex;
+    int srcIndex=0, destIndex=0;
     for(int i=0; i<nodes.size(); i++){
-        if(nodes[i].code==a)
+        if(nodes[i].airport.getCode()==a)
             srcIndex = i;
-        if(nodes[i].code==b)
+        if(nodes[i].airport.getCode()==b)
             destIndex=i;
+        if(srcIndex!=0 && destIndex!=0)
+            break;
     }
 
     bfs(srcIndex);

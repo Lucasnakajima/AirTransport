@@ -27,7 +27,7 @@ void Database::readAirports() {
                 row.push_back(word);
             }
             Airport airport(row[0], row[1], row[2], row[3], stof(row[4]), stof(row[5]));
-            g.nodes[i].code=row[0];
+            g.nodes[i].airport=airport;
             airports.push_back(airport);
             i++;
         }
@@ -73,8 +73,12 @@ void Database::graphEverything() {
             while(getline(str, word, ',')) {
                 row.push_back(word);
             }
-            Everything.addEdge(row[0], row[1]);
+            Everything.addEdge(row[0], row[1], row[2]);
         }
     }
+}
+
+int Database::distance(string src, string dest) {
+    return Everything.distance(src, dest);
 }
 

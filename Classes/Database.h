@@ -24,6 +24,7 @@ public:
     void readAirports();
     void readAirlines();
     Database();
+    int distance(string src, string dest);
     void graphEverything();
 };
 
