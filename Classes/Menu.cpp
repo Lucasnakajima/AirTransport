@@ -15,7 +15,7 @@ void Menu::run() {
         cin >> n;
         switch(n){
             case 1:
-                cout <<"\n" << database.distance("MAO", "LIS")<< "\n";
+                cout <<"\n" << database.path("MAO", "LIS") <<"\n";
                 break;
             case 2:
                 exit(0);

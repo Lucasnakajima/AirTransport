@@ -78,7 +78,15 @@ void Database::graphEverything() {
     }
 }
 
+/*vector<Database::flight> Database::distance(string src, string dest) {
+    return Everything.distance(src, dest);
+}*/
+
 int Database::distance(string src, string dest) {
     return Everything.distance(src, dest);
 }
 
+int Database::path(string src, string dest) {
+    vector<int> path = Everything.Path(src, dest);
+    return path.size();
+}

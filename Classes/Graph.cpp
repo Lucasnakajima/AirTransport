@@ -241,3 +241,58 @@ int Graph::diameter() {
     }
     return max;
 }
+
+bool Graph::bfsPath(int src, int dest, int *pred) {
+    for (int i = 1; i <= n; i++){ nodes[i].visited = false; nodes[i].distance = -1; pred[i] = -1;}
+    queue<int> q;
+    q.push(src);
+    nodes[src].visited = true;
+    nodes[src].distance = 0;
+    while (!q.empty()) { // while there are still unvisited nodes
+        int u = q.front();
+        q.pop();
+        for (auto e: nodes[u].adj) {
+            int w = e.dest;
+            if (!nodes[w].visited) {
+                q.push(w);
+                nodes[w].visited = true;
+                nodes[w].distance = nodes[u].distance + 1;
+                pred[w] = u;
+
+                // TODO Return the airlines
+                nodes[src].flight.dest = nodes[w].airport;
+                nodes[src].flight.airlines = e.Airlines;
+                if(w==dest)
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+
+vector<int> Graph::Path(string src, string dest) {
+    int srcIndex=0, destIndex=0;
+    for(int i=0; i<nodes.size(); i++){
+        if(nodes[i].airport.getCode()==src)
+            srcIndex = i;
+        if(nodes[i].airport.getCode()==dest)
+            destIndex=i;
+        if(srcIndex!=0 && destIndex!=0)
+            break;
+    }
+    vector<int> path;
+    int pred[nodes.size()];
+    if(bfsPath(srcIndex, destIndex, pred)){
+        int crawl = destIndex;
+        path.push_back(crawl);
+        while (pred[crawl] != -1) {
+            flight test = nodes[crawl].flight;
+            path.push_back(pred[crawl]);
+            crawl = pred[crawl];
+        }
+        for(int i=0; i<path.size(); i++){
+
+        }
+    }
+    return path;
+}
