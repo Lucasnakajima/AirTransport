@@ -306,7 +306,9 @@ vector<vector<string>> Graph::Path(string src, string dest) {
     return path;
 }
 
-void Graph::bfstest(vector<int> *parent, int src) {
+//Djikstras Algorithm
+
+void Graph::bfstest(vector<int> *parent, int src, vector<string> *airlines) {
     vector<int> dist(nodes.size(), 1000000000);
     queue<int> q;
     q.push(src);
@@ -327,8 +329,9 @@ void Graph::bfstest(vector<int> *parent, int src) {
                 q.push(w);
                 parent[w].clear();
                 parent[w].push_back(u);
+                airlines[w] = e.Airlines;
             }
-            else if(dist[w]==dist[u]){
+            else if(dist[w]==dist[u] + 1){
                 parent[w].push_back(u);
             }
         }
@@ -344,7 +347,7 @@ void Graph::find_paths(vector<vector<string>> &paths, vector<string> &path, vect
     for(int par : parent[dest]){
         path.push_back(nodes[dest].airport.getCode());
         find_paths(paths, path, parent, par);
-        path.erase(path.begin()+1, path.end());
+        path.pop_back();
     }
 }
 

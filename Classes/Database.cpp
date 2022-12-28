@@ -83,7 +83,7 @@ int Database::distance(string src, string dest) {
 }
 
 vector<vector<string>> Database::path(string src, string dest) {
-    int srci, desti;
+    int srci=0, desti=0;
     for(int i=1; i<Everything.nodes.size(); i++){
         if(Everything.nodes[i].airport.getCode() == src){
             srci = i;
@@ -91,12 +91,15 @@ vector<vector<string>> Database::path(string src, string dest) {
         else if(Everything.nodes[i].airport.getCode() == dest){
             desti = i;
         }
+        if(srci!=0 && desti!=0)
+            break;
     }
 
     vector<vector<string>> paths;
     vector<string> MainPath;
+    vector<string> Airlines[Everything.nodes.size()];
     vector<int> Parent[Everything.nodes.size()];
-    Everything.bfstest(Parent, srci);
+    Everything.bfstest(Parent, srci, Airlines);
     Everything.find_paths(paths, MainPath, Parent, desti);
 
 

@@ -67,7 +67,7 @@ public:
     int diameter();
     bool bfsPath(int src, int dest, destination pred[], Airport airports[]);
     vector<vector<string>> Path(string src, string dest);
-    void bfstest(vector<int> parent[], int src);
+    void bfstest(vector<int> parent[], int src, vector<string> airlines[]);
     void find_paths(vector<vector<string>>& paths, vector<string>& path, vector<int> parent[], int dest);
 };
 
