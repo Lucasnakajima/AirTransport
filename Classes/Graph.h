@@ -6,6 +6,7 @@
 #define AIRTRANSPORT_GRAPH_H
 
 #include <list>
+#include <bits/stdc++.h>
 #include <vector>
 #include <queue>
 #include "Airport.h"
@@ -66,6 +67,8 @@ public:
     int diameter();
     bool bfsPath(int src, int dest, destination pred[], Airport airports[]);
     vector<vector<string>> Path(string src, string dest);
+    void bfstest(vector<int> parent[], int src);
+    void find_paths(vector<vector<string>>& paths, vector<string>& path, vector<int> parent[], int dest);
 };
 
 

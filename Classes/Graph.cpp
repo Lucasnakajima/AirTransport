@@ -305,3 +305,47 @@ vector<vector<string>> Graph::Path(string src, string dest) {
     }
     return path;
 }
+
+void Graph::bfstest(vector<int> *parent, int src) {
+    vector<int> dist(nodes.size(), 1000000000);
+    queue<int> q;
+    q.push(src);
+    parent[src] = {-1};
+    nodes[src].visited = true;
+    dist[src] = 0;
+    while (!q.empty()) { // while there are still unvisited nodes
+        int u = q.front();
+        q.pop();
+        for (auto e: nodes[u].adj) {
+            int w = e.dest;
+            if (dist[w] > dist[u] + 1){
+
+                // A shorter distance is found
+                // So erase all the previous parents
+                // and insert new parent u in parent[v]
+                dist[w] = dist[u] + 1;
+                q.push(w);
+                parent[w].clear();
+                parent[w].push_back(u);
+            }
+            else if(dist[w]==dist[u]){
+                parent[w].push_back(u);
+            }
+        }
+    }
+}
+
+void Graph::find_paths(vector<vector<string>> &paths, vector<string> &path, vector<int> *parent, int dest) {
+    if(dest == -1) {
+        paths.push_back(path);
+        return;
+    }
+
+    for(int par : parent[dest]){
+        path.push_back(nodes[dest].airport.getCode());
+        find_paths(paths, path, parent, par);
+        path.erase(path.begin()+1, path.end());
+    }
+}
+
+

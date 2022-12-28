@@ -83,6 +83,24 @@ int Database::distance(string src, string dest) {
 }
 
 vector<vector<string>> Database::path(string src, string dest) {
+    int srci, desti;
+    for(int i=1; i<Everything.nodes.size(); i++){
+        if(Everything.nodes[i].airport.getCode() == src){
+            srci = i;
+        }
+        else if(Everything.nodes[i].airport.getCode() == dest){
+            desti = i;
+        }
+    }
+
+    vector<vector<string>> paths;
+    vector<string> MainPath;
+    vector<int> Parent[Everything.nodes.size()];
+    Everything.bfstest(Parent, srci);
+    Everything.find_paths(paths, MainPath, Parent, desti);
+
+
+
     vector<vector<string>> path = Everything.Path(src, dest);
     return path;
 }
