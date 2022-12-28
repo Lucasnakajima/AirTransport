@@ -242,8 +242,8 @@ int Graph::diameter() {
     return max;
 }
 
-bool Graph::bfsPath(int src, int dest, int *pred) {
-    for (int i = 1; i <= n; i++){ nodes[i].visited = false; nodes[i].distance = -1; pred[i] = -1;}
+bool Graph::bfsPath(int src, int dest, destination *pred, Airport *airports) {
+    for (int i = 1; i <= n; i++){ nodes[i].visited = false; nodes[i].distance = -1; pred[i].src = -1;}
     queue<int> q;
     q.push(src);
     nodes[src].visited = true;
@@ -257,11 +257,9 @@ bool Graph::bfsPath(int src, int dest, int *pred) {
                 q.push(w);
                 nodes[w].visited = true;
                 nodes[w].distance = nodes[u].distance + 1;
-                pred[w] = u;
-
-                // TODO Return the airlines
-                nodes[src].flight.dest = nodes[w].airport;
-                nodes[src].flight.airlines = e.Airlines;
+                pred[w].src = u;
+                pred[w].Airlines = e.Airlines;
+                airports[w] = nodes[u].airport;
                 if(w==dest)
                     return true;
             }
@@ -270,7 +268,7 @@ bool Graph::bfsPath(int src, int dest, int *pred) {
     return false;
 }
 
-vector<int> Graph::Path(string src, string dest) {
+vector<vector<string>> Graph::Path(string src, string dest) {
     int srcIndex=0, destIndex=0;
     for(int i=0; i<nodes.size(); i++){
         if(nodes[i].airport.getCode()==src)
@@ -280,19 +278,30 @@ vector<int> Graph::Path(string src, string dest) {
         if(srcIndex!=0 && destIndex!=0)
             break;
     }
-    vector<int> path;
-    int pred[nodes.size()];
-    if(bfsPath(srcIndex, destIndex, pred)){
+    vector<vector<string>> path;
+    Airport airports[nodes.size()];
+    destination pred[nodes.size()];
+    if(bfsPath(srcIndex, destIndex, pred, airports)){
+        vector<string> tmp;
         int crawl = destIndex;
-        path.push_back(crawl);
-        while (pred[crawl] != -1) {
-            flight test = nodes[crawl].flight;
-            path.push_back(pred[crawl]);
-            crawl = pred[crawl];
+        tmp.push_back(nodes[crawl].airport.getCode());
+        for(int i=0; i<pred[crawl].Airlines.size(); i++){
+            tmp.push_back(pred[crawl].Airlines[i]);
         }
-        for(int i=0; i<path.size(); i++){
-
+        path.push_back(tmp);
+        crawl = pred[crawl].src;
+        while (pred[crawl].src != -1) {
+            tmp.clear();
+            tmp.push_back(nodes[crawl].airport.getCode());
+            for(int i=0; i<pred[crawl].Airlines.size(); i++){
+                tmp.push_back(pred[crawl].Airlines[i]);
+            }
+            path.push_back(tmp);
+            crawl = pred[crawl].src;
         }
+        tmp.clear();
+        tmp.push_back(nodes[crawl].airport.getCode());
+        path.push_back(tmp);
     }
     return path;
 }

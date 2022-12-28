@@ -21,12 +21,13 @@ private:
     Graph Everything;
 
 public:
+
     void readAirports();
     void readAirlines();
     Database();
     //vector<flight> distance(string src, string dest);
     int distance(string src, string dest);
-    int path(string src, string dest);
+    vector<vector<string>> path(string src, string dest);
     void graphEverything();
 };
 

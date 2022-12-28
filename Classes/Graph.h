@@ -15,9 +15,9 @@
 using namespace std;
 
 class Graph {
-    struct flight{
-        Airport dest;
-        vector<string> airlines;
+    struct destination{
+        int src;
+        vector<string> Airlines;
     };
     struct Edge {
         int dest;   // Destination node
@@ -31,7 +31,6 @@ class Graph {
         int color;
         int distance;
         Airport airport;
-        flight flight;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -65,8 +64,8 @@ public:
     int maxbfs(int v);
     int distance(string a, string b);
     int diameter();
-    bool bfsPath(int src, int dest, int pred[]);
-    vector<int> Path(string src, string dest);
+    bool bfsPath(int src, int dest, destination pred[], Airport airports[]);
+    vector<vector<string>> Path(string src, string dest);
 };
 
 
