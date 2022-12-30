@@ -25,14 +25,14 @@ void Graph::addEdge(string src, string dest, string comp, int weight) {
     }
 
     if (srcIndex<1 || srcIndex>n || destIndex<1 || destIndex>n) return;
-    for(auto it=nodes[srcIndex].adj.begin(); it!=nodes[srcIndex].adj.end(); it++)
-        if(it->dest==destIndex) {
-            it->Airlines.push_back(comp);
+    auto it = nodes[srcIndex].adj.find(destIndex);
+        if(it!=nodes[srcIndex].adj.end()) {
+            it->second.Airlines.push_back(comp);
             return;
         }
-    nodes[srcIndex].adj.push_back({destIndex, weight});
-    nodes[srcIndex].adj.back().Airlines.push_back(comp);
-    if (!hasDir) nodes[destIndex].adj.push_back({srcIndex, weight});
+    nodes[srcIndex].adj[destIndex] = {destIndex, weight};
+    nodes[srcIndex].adj[destIndex].Airlines.push_back(comp);
+    if (!hasDir) nodes[destIndex].adj[srcIndex] = {srcIndex, weight};
 }
 
 // Depth-First Search: example implementation
@@ -41,7 +41,7 @@ void Graph::dfs(int v) {
     // cout << v << " ";
     nodes[v].visited = true;
     for (auto e : nodes[v].adj) {
-        int w = e.dest;
+        int w = e.second.dest;
         if (!nodes[w].visited)
             dfs(w);
     }
@@ -73,7 +73,7 @@ int Graph::weightedOutDegree(int v) {
         return -1;
     int sum = 0;
     for(auto i : nodes[v].adj)
-        sum = sum + i.weight;
+        sum = sum + i.second.weight;
     return sum;
 }
 
@@ -100,7 +100,7 @@ int Graph::dfsGC(int v){
     int count = 1;
     nodes[v].visited = true;
     for (auto e : nodes[v].adj) {
-        int w = e.dest;
+        int w = e.second.dest;
         if (!nodes[w].visited)
             count += dfsGC(w);
     }
@@ -131,7 +131,7 @@ int Graph::giantComponent() {
 void Graph::dfsTopo(int v, list<int> &order) {
     nodes[v].visited = true;
     for (auto e : nodes[v].adj) {
-        int w = e.dest;
+        int w = e.second.dest;
         if (!nodes[w].visited)
             dfsTopo(w, order);
     }
@@ -149,7 +149,7 @@ list<int> Graph::topologicalSorting() {
 void Graph::dfsCycle(int v, int& count) {
     nodes[v].color=1;
     for (auto e : nodes[v].adj) {
-        int w = e.dest;
+        int w = e.second.dest;
         if (nodes[w].color == 1) count++;
         else if(nodes[w].color == 0) dfsCycle(w, count);
 
@@ -178,7 +178,7 @@ void Graph::bfs(int v) {
         // show node order
         //cout << u << " ";
         for (auto e: nodes[u].adj) {
-            int w = e.dest;
+            int w = e.second.dest;
             if (!nodes[w].visited) {
                 q.push(w);
                 nodes[w].visited = true;
@@ -201,7 +201,7 @@ int Graph::maxbfs(int v) {
         // show node order
         //cout << u << " ";
         for (auto e: nodes[u].adj) {
-            int w = e.dest;
+            int w = e.second.dest;
             if (!nodes[w].visited) {
                 q.push(w);
                 nodes[w].visited = true;
@@ -242,73 +242,9 @@ int Graph::diameter() {
     return max;
 }
 
-bool Graph::bfsPath(int src, int dest, destination *pred, Airport *airports) {
-    for (int i = 1; i <= n; i++){ nodes[i].visited = false; nodes[i].distance = -1; pred[i].src = -1;}
-    queue<int> q;
-    q.push(src);
-    nodes[src].visited = true;
-    nodes[src].distance = 0;
-    while (!q.empty()) { // while there are still unvisited nodes
-        int u = q.front();
-        q.pop();
-        for (auto e: nodes[u].adj) {
-            int w = e.dest;
-            if (!nodes[w].visited) {
-                q.push(w);
-                nodes[w].visited = true;
-                nodes[w].distance = nodes[u].distance + 1;
-                pred[w].src = u;
-                pred[w].Airlines = e.Airlines;
-                airports[w] = nodes[u].airport;
-                if(w==dest)
-                    return true;
-            }
-        }
-    }
-    return false;
-}
-
-vector<vector<string>> Graph::Path(string src, string dest) {
-    int srcIndex=0, destIndex=0;
-    for(int i=0; i<nodes.size(); i++){
-        if(nodes[i].airport.getCode()==src)
-            srcIndex = i;
-        if(nodes[i].airport.getCode()==dest)
-            destIndex=i;
-        if(srcIndex!=0 && destIndex!=0)
-            break;
-    }
-    vector<vector<string>> path;
-    Airport airports[nodes.size()];
-    destination pred[nodes.size()];
-    if(bfsPath(srcIndex, destIndex, pred, airports)){
-        vector<string> tmp;
-        int crawl = destIndex;
-        tmp.push_back(nodes[crawl].airport.getCode());
-        for(int i=0; i<pred[crawl].Airlines.size(); i++){
-            tmp.push_back(pred[crawl].Airlines[i]);
-        }
-        path.push_back(tmp);
-        crawl = pred[crawl].src;
-        while (pred[crawl].src != -1) {
-            tmp.clear();
-            tmp.push_back(nodes[crawl].airport.getCode());
-            for(int i=0; i<pred[crawl].Airlines.size(); i++){
-                tmp.push_back(pred[crawl].Airlines[i]);
-            }
-            path.push_back(tmp);
-            crawl = pred[crawl].src;
-        }
-        tmp.clear();
-        tmp.push_back(nodes[crawl].airport.getCode());
-        path.push_back(tmp);
-    }
-    return path;
-}
-
 //Djikstras Algorithm
 
-void Graph::bfstest(vector<int> *parent, int src, vector<string> *airlines) {
+void Graph::bfsPath(vector<int> *parent, int src) {
     vector<int> dist(nodes.size(), 1000000000);
     queue<int> q;
     q.push(src);
@@ -319,7 +255,7 @@ void Graph::bfstest(vector<int> *parent, int src, vector<string> *airlines) {
         int u = q.front();
         q.pop();
         for (auto e: nodes[u].adj) {
-            int w = e.dest;
+            int w = e.second.dest;
             if (dist[w] > dist[u] + 1){
 
                 // A shorter distance is found
@@ -329,7 +265,6 @@ void Graph::bfstest(vector<int> *parent, int src, vector<string> *airlines) {
                 q.push(w);
                 parent[w].clear();
                 parent[w].push_back(u);
-                airlines[w] = e.Airlines;
             }
             else if(dist[w]==dist[u] + 1){
                 parent[w].push_back(u);

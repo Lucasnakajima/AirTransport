@@ -15,13 +15,18 @@ void Menu::run() {
         cin >> n;
         switch(n){
             case 1 :{
-                vector<vector<string>> path = database.path("MAO", "LIS");
-                for (int i = path.size() - 1; i > 0; i--) {
-                    cout << "De " << path[i][0] << " para " << path[i - 1][0] << ". Podendo ir de:\n";
-                    for(int j=1; j<path[i-1].size(); j++){
-                        cout << path[i-1][j] << "\n";
+                vector<vector<vector<string>>> path = database.path("MAO", "LIS");
+                cout << "Voce possui " << path.size() << " rotas: \n";
+                for(int k = 0; k<path.size(); k++) {
+                    cout << "Rota " << k+1 << ": \n";
+                    for (int i = 0; i < path[k].size()-1; i++) {
+                        cout << "De " << path[k][i][0] << " para " << path[k][i+1][0] << ". Podendo ir de:\n";
+                        for (int j = 1; j < path[k][i].size(); j++) {
+                            cout << path[k][i][j] << "\n";
+                        }
+                        cout << "\n";
                     }
-                    cout << "\n";
+                    cout << "\n\n\n";
                 }
                 break;
             }

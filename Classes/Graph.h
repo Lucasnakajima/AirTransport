@@ -27,7 +27,7 @@ class Graph {
     };
 
     struct Node {
-        list<Edge> adj; // The list of outgoing edges (to adjacent nodes)
+        unordered_map<int,Edge> adj; // The list of outgoing edges (to adjacent nodes)
         bool visited;// As the node been visited on a search?
         int color;
         int distance;
@@ -65,9 +65,7 @@ public:
     int maxbfs(int v);
     int distance(string a, string b);
     int diameter();
-    bool bfsPath(int src, int dest, destination pred[], Airport airports[]);
-    vector<vector<string>> Path(string src, string dest);
-    void bfstest(vector<int> parent[], int src, vector<string> airlines[]);
+    void bfsPath(vector<int> parent[], int src);
     void find_paths(vector<vector<string>>& paths, vector<string>& path, vector<int> parent[], int dest);
 };
 

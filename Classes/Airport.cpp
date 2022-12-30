@@ -55,6 +55,14 @@ void Airport::setLongitude(float Longitude) {
     this->Longitude = Longitude;
 }
 
+void Airport::setGraphIndex(int index) {
+    graphIndex = index;
+}
+
+int Airport::getGraphIndex() {
+    return graphIndex;
+}
+
 Airport::Airport(string Code, string Name, string City, string Country, float Latitude, float Longitude) {
     setCity(City);
     setCode(Code);
@@ -64,14 +72,6 @@ Airport::Airport(string Code, string Name, string City, string Country, float La
     setLongitude(Longitude);
 }
 
-int Airport::hashCode() {
-    int hashCode = 0;
-    for (int i = 0; i < Code.length(); i++) {
-        hashCode += Code[i] * pow(31, i);
-    }
-    return hashCode;
-}
-
 bool Airport::operator()(const Airport &a1, const Airport &a2) const {
     return a1.getCode() == a2.getCode();
 }
@@ -79,4 +79,9 @@ bool Airport::operator()(const Airport &a1, const Airport &a2) const {
 bool Airport::operator==(const Airport &a1) const {
     return this->getCode()==a1.getCode();
 }
+
+
+
+
+
 

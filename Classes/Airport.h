@@ -18,6 +18,7 @@ private:
     string Country; /*!< País do Aeroporto*/
     float Latitude; /*!< Latitude do Aeroporto*/
     float Longitude; /*!< Longitude do Aeroporto*/
+    int graphIndex; /*!< Índice do Aeroporto no grafo geral*/
 
 public:
     ///set Code with @param Code
@@ -32,6 +33,9 @@ public:
     void setLatitude(float Latitude);
     ///set Longitude with @param Longitude
     void setLongitude(float Longitude);
+    ///set graphIndex with @param index
+    void setGraphIndex(int index);
+
 
     string getCode() const;
     string getName() const;
@@ -39,8 +43,7 @@ public:
     string getCountry();
     float getLatitude();
     float getLongitude();
-
-    int hashCode();
+    int getGraphIndex();
 
     bool operator() (const Airport& a1, const Airport& a2) const;
     bool operator==(const Airport& a1) const;
