@@ -244,7 +244,7 @@ int Graph::diameter() {
 
 //Djikstras Algorithm
 
-void Graph::bfsPath(vector<int> *parent, int src) {
+void Graph::bfsPath(vector<int> *parent, int src, vector<string>& airlines) {
     vector<int> dist(nodes.size(), 1000000000);
     queue<int> q;
     q.push(src);
@@ -256,18 +256,37 @@ void Graph::bfsPath(vector<int> *parent, int src) {
         q.pop();
         for (auto e: nodes[u].adj) {
             int w = e.second.dest;
-            if (dist[w] > dist[u] + 1){
+            if (airlines.empty()) {
+                if (dist[w] > dist[u] + 1) {
 
-                // A shorter distance is found
-                // So erase all the previous parents
-                // and insert new parent u in parent[v]
-                dist[w] = dist[u] + 1;
-                q.push(w);
-                parent[w].clear();
-                parent[w].push_back(u);
+                    // A shorter distance is found
+                    // So erase all the previous parents
+                    // and insert new parent u in parent[v]
+                    dist[w] = dist[u] + 1;
+                    q.push(w);
+                    parent[w].clear();
+                    parent[w].push_back(u);
+                } else if (dist[w] == dist[u] + 1) {
+                    parent[w].push_back(u);
+                }
             }
-            else if(dist[w]==dist[u] + 1){
-                parent[w].push_back(u);
+            else{
+                for(int i=0; i<airlines.size(); i++){
+                    for(int j=0; j<e.second.Airlines.size(); j++){
+                        if (dist[w] > dist[u] + 1 && airlines[i] == e.second.Airlines[j]) {
+
+                            // A shorter distance is found
+                            // So erase all the previous parents
+                            // and insert new parent u in parent[v]
+                            dist[w] = dist[u] + 1;
+                            q.push(w);
+                            parent[w].clear();
+                            parent[w].push_back(u);
+                        } else if (dist[w] == dist[u] + 1 && airlines[i] == e.second.Airlines[j]) {
+                            parent[w].push_back(u);
+                        }
+                    }
+                }
             }
         }
     }

@@ -25,9 +25,9 @@ public:
     void readAirlines();
     Database();
     void graphEverything();
-    vector<vector<vector<string>>> path(string src, string dest);
-    vector<vector<vector<string>>> cityPath(string src, string dest);
-    vector<vector<vector<string>>> coordsPath(double srcLati, double srcLongi, double destLati, double destLongi);
+    vector<vector<vector<string>>> path(string src, string dest, vector<string>& airlines);
+    vector<vector<vector<string>>> cityPath(string src, string dest, vector<string>& airlines);
+    vector<vector<vector<string>>> coordsPath(double srcLati, double srcLongi, double destLati, double destLongi, vector<string>& airlines);
 
 };
 

@@ -15,9 +15,12 @@ void Menu::run() {
         cin >> n;
         switch(n){
             case 1 :{
-                //vector<vector<vector<string>>> path = database.path("MAO", "LIS");
+                vector<string> airlines;
+                //airlines.push_back("TAP");
+                airlines.push_back("TAM");
+                vector<vector<vector<string>>> path = database.path("MAO", "LIS", airlines);
                 //vector<vector<vector<string>>> path = database.cityPath("Paris", "Manaus");
-                vector<vector<vector<string>>> path = database.coordsPath(49.012779, 2.55, 40.639751, -73.778925);
+                //vector<vector<vector<string>>> path = database.coordsPath(49.012779, 2.55, 40.639751, -73.778925);
                 cout << "Voce possui " << path.size() << " rotas: \n";
                 for(int k = 0; k<path.size(); k++) {
                     cout << "Rota " << k+1 << ": \n";

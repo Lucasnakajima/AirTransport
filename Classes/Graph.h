@@ -65,7 +65,7 @@ public:
     int maxbfs(int v);
     int distance(string a, string b);
     int diameter();
-    void bfsPath(vector<int> parent[], int src);
+    void bfsPath(vector<int> parent[], int src, vector<string>& airlines);
     void find_paths(vector<vector<string>>& paths, vector<string>& path, vector<int> parent[], int dest);
 };
 

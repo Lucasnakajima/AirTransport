@@ -79,14 +79,14 @@ void Database::graphEverything() {
     }
 }
 
-vector<vector<vector<string>>> Database::path(string src, string dest) {
+vector<vector<vector<string>>> Database::path(string src, string dest, vector<string>& airlines) {
     int srci=airports.find(src)->second.getGraphIndex(), desti=airports.find(dest)->second.getGraphIndex();
 
     vector<vector<string>> paths;
     vector<vector<vector<string>>> allpaths;
     vector<string> path;
     vector<int> Parent[Everything.nodes.size()];
-    Everything.bfsPath(Parent, srci);
+    Everything.bfsPath(Parent, srci, airlines);
     Everything.find_paths(paths, path, Parent, desti);
     for(int i=0; i<paths.size(); i++){
         vector<vector<string>> aux;
@@ -94,8 +94,21 @@ vector<vector<vector<string>>> Database::path(string src, string dest) {
             vector<string> tmp;
             tmp.push_back(paths[i][j]);
             int indexfrom=airports.find(paths[i][j])->second.getGraphIndex(), indexto=airports.find(paths[i][j-1])->second.getGraphIndex();
-            tmp.insert(tmp.end(), Everything.nodes[indexfrom].adj.find(indexto)->second.Airlines.begin(), Everything.nodes[indexfrom].adj.find(indexto)->second.Airlines.end());
-            aux.push_back(tmp);
+            if(airlines.empty()) {
+                tmp.insert(tmp.end(), Everything.nodes[indexfrom].adj.find(indexto)->second.Airlines.begin(),
+                           Everything.nodes[indexfrom].adj.find(indexto)->second.Airlines.end());
+                aux.push_back(tmp);
+            }
+            else{
+                for(int k=0; k<airlines.size(); k++){
+                    for(int l=0; l<Everything.nodes[indexfrom].adj.find(indexto)->second.Airlines.size(); l++){
+                        if(airlines[k] == Everything.nodes[indexfrom].adj.find(indexto)->second.Airlines[l]){
+                            tmp.push_back(Everything.nodes[indexfrom].adj.find(indexto)->second.Airlines[l]);
+                        }
+                    }
+                }
+                aux.push_back(tmp);
+            }
         }
         vector<string> tmp;
         tmp.push_back(paths[i][0]);
@@ -104,11 +117,10 @@ vector<vector<vector<string>>> Database::path(string src, string dest) {
     }
 
 
-
     return allpaths;
 }
 
-vector<vector<vector<string>>> Database::cityPath(string src, string dest) {
+vector<vector<vector<string>>> Database::cityPath(string src, string dest, vector<string>& airlines) {
     vector<string> srci, desti;
     for(auto it : airports){
         if(it.second.getCity() == src)
@@ -119,7 +131,8 @@ vector<vector<vector<string>>> Database::cityPath(string src, string dest) {
     vector<vector<vector<string>>> allpaths;
     for(int i=0; i<srci.size(); i++){
         for(int j=0; j<desti.size(); j++){
-            vector<vector<vector<string>>> tmp = path(srci[i], desti[j]);
+
+            vector<vector<vector<string>>> tmp = path(srci[i], desti[j], airlines);
             if(allpaths.empty()) {
                 allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
             }
@@ -136,7 +149,7 @@ vector<vector<vector<string>>> Database::cityPath(string src, string dest) {
 
 }
 
-vector<vector<vector<string>>> Database::coordsPath(double srcLati, double srcLongi, double destLati, double destLongi) {
+vector<vector<vector<string>>> Database::coordsPath(double srcLati, double srcLongi, double destLati, double destLongi, vector<string>& airlines) {
     vector<string> srci, desti;
     double r=0.01745327, er=6371.01;
     srcLati = srcLati*r;
@@ -158,7 +171,8 @@ vector<vector<vector<string>>> Database::coordsPath(double srcLati, double srcLo
     vector<vector<vector<string>>> allpaths;
     for(int i=0; i<srci.size(); i++){
         for(int j=0; j<desti.size(); j++){
-            vector<vector<vector<string>>> tmp = path(srci[i], desti[j]);
+            vector<string> airlines;
+            vector<vector<vector<string>>> tmp = path(srci[i], desti[j], airlines);
             if(allpaths.empty()) {
                 allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
             }
