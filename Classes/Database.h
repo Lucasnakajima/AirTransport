@@ -10,6 +10,7 @@
 #include <fstream>
 #include <vector>
 #include <unordered_set>
+#include <cmath>
 #include "list"
 
 class Database {
@@ -23,9 +24,11 @@ public:
     void readAirports();
     void readAirlines();
     Database();
-    int distance(string src, string dest);
-    vector<vector<vector<string>>> path(string src, string dest);
     void graphEverything();
+    vector<vector<vector<string>>> path(string src, string dest);
+    vector<vector<vector<string>>> cityPath(string src, string dest);
+    vector<vector<vector<string>>> coordsPath(double srcLati, double srcLongi, double destLati, double destLongi);
+
 };
 
 

@@ -79,10 +79,6 @@ void Database::graphEverything() {
     }
 }
 
-int Database::distance(string src, string dest) {
-    return Everything.distance(src, dest);
-}
-
 vector<vector<vector<string>>> Database::path(string src, string dest) {
     int srci=airports.find(src)->second.getGraphIndex(), desti=airports.find(dest)->second.getGraphIndex();
 
@@ -109,5 +105,71 @@ vector<vector<vector<string>>> Database::path(string src, string dest) {
 
 
 
+    return allpaths;
+}
+
+vector<vector<vector<string>>> Database::cityPath(string src, string dest) {
+    vector<string> srci, desti;
+    for(auto it : airports){
+        if(it.second.getCity() == src)
+            srci.push_back(it.second.getCode());
+        else if(it.second.getCity() == dest)
+            desti.push_back(it.second.getCode());
+    }
+    vector<vector<vector<string>>> allpaths;
+    for(int i=0; i<srci.size(); i++){
+        for(int j=0; j<desti.size(); j++){
+            vector<vector<vector<string>>> tmp = path(srci[i], desti[j]);
+            if(allpaths.empty()) {
+                allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
+            }
+            else if(tmp[0].size() < allpaths[0].size()) {
+                allpaths.clear();
+                allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
+            }
+            else if(tmp[0].size() == allpaths[0].size()){
+                allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
+            }
+        }
+    }
+    return allpaths;
+
+}
+
+vector<vector<vector<string>>> Database::coordsPath(double srcLati, double srcLongi, double destLati, double destLongi) {
+    vector<string> srci, desti;
+    double r=0.01745327, er=6371.01;
+    srcLati = srcLati*r;
+    srcLongi = srcLongi*r;
+    destLati = destLati*r;
+    destLongi = destLongi*r;
+    for(auto it : airports){
+        double airplati = it.second.getLatitude()*r, airplongi=it.second.getLongitude()*r;
+        if(it.second.getCode()=="CDG" || it.second.getCode()=="JFK"){
+            r=0.01745327;
+        }
+        double distancesrc =er * acos((sin(srcLati)*sin(airplati)) + (cos(srcLati)*cos(airplati)*cos(srcLongi - airplongi)));
+        double distancedest = er * acos((sin(destLati)*sin(airplati)) + (cos(destLati)*cos(airplati)*cos(destLongi - airplongi)));
+        if(distancesrc < 50)
+            srci.push_back(it.second.getCode());
+        if(distancedest < 50)
+            desti.push_back(it.second.getCode());
+    }
+    vector<vector<vector<string>>> allpaths;
+    for(int i=0; i<srci.size(); i++){
+        for(int j=0; j<desti.size(); j++){
+            vector<vector<vector<string>>> tmp = path(srci[i], desti[j]);
+            if(allpaths.empty()) {
+                allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
+            }
+            else if(tmp[0].size() < allpaths[0].size()) {
+                allpaths.clear();
+                allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
+            }
+            else if(tmp[0].size() == allpaths[0].size()){
+                allpaths.insert(allpaths.end(), tmp.begin(), tmp.end());
+            }
+        }
+    }
     return allpaths;
 }
