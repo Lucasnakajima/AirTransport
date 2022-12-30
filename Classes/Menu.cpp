@@ -1,5 +1,18 @@
 //
-// Created by Utilizador on 27-Dec-22.
+// Pela minha parte, tu tens que fazer o case 1 do menu::run(),
+// o usuário tem que procurar os voo de um local a outro, temos
+// 3 maneiras de achar o Local:
+//1: Codigo do aeroporto: Método Database::path()
+//2: Cidade dos aeroportos: Método Database::cityPath()
+//3: Raio das coordenadas: Método Database::coordsPath()
+// No método 2, implementar o país para as cidades. (extremamente simples)
+// Para TODOS os métodos o usuário pode escolher ou não Airlines específicas
+// pelo código das mesmas, através de um vetor de string. Caso ele não queira
+//deverá por um vetor VAZIO para o programa funcionar.
+// O método Database::path() é usado em todos os métodos, sendo ele o principal
+// para achar os melhores caminhos.
+//Os loops no CASE1, são para dar print nas rotas + airlines usadas.
+// qualquer dúvida mandar no email: ChupaMinhaPiroca.com
 //
 
 #include "Menu.h"
