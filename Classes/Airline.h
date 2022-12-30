@@ -28,7 +28,21 @@ public:
     Airline(string Code, string Name, string Country);
     ///create a new Class with @param Callsign
     Airline(string Code, string Name,string Callsign, string Country);
-};
 
+    string getCode() const;
+
+    string getName() const;
+
+    bool operator==(const Airline &a1) const;
+};
+struct Airline_hash{
+    size_t operator() (const Airline& obj) const{
+        string s1 = obj.getName();
+        size_t v = 0;
+        for(unsigned int i=0; i<s1.size();i++)
+            v = 37*v + s1[i];
+        return v;
+    }
+};
 
 #endif //AIRTRANSPORT_AIRLINE_H

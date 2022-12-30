@@ -28,7 +28,7 @@ void Database::readAirports() {
             }
             Airport airport(row[0], row[1], row[2], row[3], stof(row[4]), stof(row[5]));
             g.nodes[i].airport=airport;
-            airports.push_back(airport);
+            airports.insert(airport);
             i++;
         }
     }
@@ -50,11 +50,11 @@ void Database::readAirlines() {
             }
             if(row[2]=="_"){
                 Airline airline(row[0],row[1],row[3]);
-                airlines.push_back(airline);
+                airlines.insert(airline);
             }
             else{
                 Airline airline(row[0],row[1],row[2],row[3]);
-                airlines.push_back(airline);
+                airlines.insert(airline);
             }
         }
     }

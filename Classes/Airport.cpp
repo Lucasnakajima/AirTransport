@@ -11,7 +11,7 @@ string Airport::getCode() const {
     return this->Code;
 }
 
-string Airport::getName() {
+string Airport::getName() const {
     return this->Name;
 }
 
@@ -79,15 +79,4 @@ bool Airport::operator()(const Airport &a1, const Airport &a2) const {
 bool Airport::operator==(const Airport &a1) const {
     return this->getCode()==a1.getCode();
 }
-//TODO
-/* HASHES*/
 
-/*
-size_t hash<Airport>::operator()(const Airport &obj) const {
-    return hash<string>()(obj.getCode());
-}
-
-size_t AirportHasher::operator()(const Airport &obj) const {
-    return hash<string>() (obj.getCode());
-}
-*/

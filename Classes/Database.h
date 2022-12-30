@@ -16,8 +16,8 @@ class Database {
 private:
     //TODO
     //unordered_set<Airport> airports;
-    list<Airport> airports;
-    list<Airline> airlines;
+    unordered_set<Airport, Airport_hash> airports;
+    unordered_set<Airline, Airline_hash> airlines;
     Graph Everything;
 
 public:

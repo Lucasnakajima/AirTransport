@@ -34,7 +34,7 @@ public:
     void setLongitude(float Longitude);
 
     string getCode() const;
-    string getName();
+    string getName() const;
     string getCity();
     string getCountry();
     float getLatitude();
@@ -48,16 +48,14 @@ public:
     Airport(string Code, string Name, string City, string Country, float Latitude, float Longitude);
     Airport();
 };
-//TODO
-/*template<>
-struct hash<Airport>
-{
-    size_t operator()(const Airport & obj) const;
+struct Airport_hash{
+    size_t operator() (const Airport& obj) const{
+        string s1 = obj.getName();
+        size_t v = 0;
+        for(unsigned int i=0; i<s1.size();i++)
+            v = 37*v + s1[i];
+        return v;
+    }
 };
-
-struct AirportHasher{
-    size_t operator() (const Airport & obj) const;
-};
-*/
 
 #endif //AIRTRANSPORT_AIRPORT_H
