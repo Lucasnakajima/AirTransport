@@ -79,6 +79,26 @@ void Database::graphEverything() {
     }
 }
 
+double Database::coordsdist(double lat1, double lon1, double lat2, double lon2) {
+    double pi=3.141592653589793;
+    double dLat = (lat2 - lat1) *
+                  pi / 180.0;
+    double dLon = (lon2 - lon1) *
+                  pi / 180.0;
+
+    // convert to radians
+    lat1 = (lat1) * pi / 180.0;
+    lat2 = (lat2) * pi / 180.0;
+
+    // apply formulae
+    double a = pow(sin(dLat / 2), 2) +
+               pow(sin(dLon / 2), 2) *
+               cos(lat1) * cos(lat2);
+    double rad = 6371;
+    double c = 2 * asin(sqrt(a));
+    return rad * c;
+}
+
 vector<vector<vector<string>>> Database::path(string src, string dest, vector<string>& airlines) {
     int srci=airports.find(src)->second.getGraphIndex(), desti=airports.find(dest)->second.getGraphIndex();
 
@@ -151,18 +171,11 @@ vector<vector<vector<string>>> Database::cityPath(string src, string dest, vecto
 
 vector<vector<vector<string>>> Database::coordsPath(double srcLati, double srcLongi, double destLati, double destLongi, vector<string>& airlines) {
     vector<string> srci, desti;
-    double r=0.01745327, er=6371.01;
-    srcLati = srcLati*r;
-    srcLongi = srcLongi*r;
-    destLati = destLati*r;
-    destLongi = destLongi*r;
+    double pi=3.141592653589793;
     for(auto it : airports){
-        double airplati = it.second.getLatitude()*r, airplongi=it.second.getLongitude()*r;
-        if(it.second.getCode()=="CDG" || it.second.getCode()=="JFK"){
-            r=0.01745327;
-        }
-        double distancesrc =er * acos((sin(srcLati)*sin(airplati)) + (cos(srcLati)*cos(airplati)*cos(srcLongi - airplongi)));
-        double distancedest = er * acos((sin(destLati)*sin(airplati)) + (cos(destLati)*cos(airplati)*cos(destLongi - airplongi)));
+        double airplati = it.second.getLatitude(), airplongi=it.second.getLongitude();
+        double distancesrc = coordsdist(airplati, airplongi, srcLati, srcLongi);
+        double distancedest =coordsdist(airplati, airplongi, destLati, destLongi);
         if(distancesrc < 50)
             srci.push_back(it.second.getCode());
         if(distancedest < 50)
@@ -187,3 +200,4 @@ vector<vector<vector<string>>> Database::coordsPath(double srcLati, double srcLo
     }
     return allpaths;
 }
+

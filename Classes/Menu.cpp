@@ -30,10 +30,10 @@ void Menu::run() {
             case 1 :{
                 vector<string> airlines;
                 //airlines.push_back("TAP");
-                airlines.push_back("TAM");
-                vector<vector<vector<string>>> path = database.path("MAO", "LIS", airlines);
-                //vector<vector<vector<string>>> path = database.cityPath("Paris", "Manaus");
-                //vector<vector<vector<string>>> path = database.coordsPath(49.012779, 2.55, 40.639751, -73.778925);
+                //airlines.push_back("TAM");
+                //vector<vector<vector<string>>> path = database.path("MAO", "LIS", airlines);
+                //vector<vector<vector<string>>> path = database.cityPath("Paris", "Manaus", airlines);
+                vector<vector<vector<string>>> path = database.coordsPath(49.012779, 2.55, 40.639751, -73.778925, airlines);
                 cout << "Voce possui " << path.size() << " rotas: \n";
                 for(int k = 0; k<path.size(); k++) {
                     cout << "Rota " << k+1 << ": \n";
