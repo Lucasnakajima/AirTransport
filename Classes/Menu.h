@@ -15,6 +15,14 @@ private:
 public:
     Menu();
     void run();
+
+    void pathByCoordinates(double srcLati, double srcLongi, double destLati, double desLongi, vector<string> airlines);
+
+    void pathByCity(string srcCity, string srcCountry, string destCity, string destCountry, vector<string> airlines);
+
+    void pathByAirport(string srcAirport, string destAirport, vector<string> airlines);
+
+    vector<string> airlineSubmenu();
 };
 
 

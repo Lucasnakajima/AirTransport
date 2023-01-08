@@ -28,9 +28,8 @@ public:
     void graphEverything();
     vector<vector<vector<string>>> path(string src, string dest, vector<string>& airlines);
     double coordsdist(double lat1, double lon1, double lat2, double lon2);
-    vector<vector<vector<string>>> cityPath(string src, string dest, vector<string>& airlines);
+    vector<vector<vector<string>>>cityPath(string srcCity, string srcCountry, string destCity, string destCountry, vector<string> &airlines);
     vector<vector<vector<string>>> coordsPath(double srcLati, double srcLongi, double destLati, double destLongi, vector<string>& airlines);
-
 };
 
 

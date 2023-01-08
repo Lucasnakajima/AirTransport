@@ -140,12 +140,12 @@ vector<vector<vector<string>>> Database::path(string src, string dest, vector<st
     return allpaths;
 }
 
-vector<vector<vector<string>>> Database::cityPath(string src, string dest, vector<string>& airlines) {
+vector<vector<vector<string>>> Database::cityPath(string srcCity, string srcCountry, string destCity, string destCountry, vector<string>& airlines) {
     vector<string> srci, desti;
     for(auto it : airports){
-        if(it.second.getCity() == src)
+        if(it.second.getCity() == srcCity and it.second.getCountry() == srcCountry)
             srci.push_back(it.second.getCode());
-        else if(it.second.getCity() == dest)
+        else if(it.second.getCity() == destCity and it.second.getCountry() == destCountry)
             desti.push_back(it.second.getCode());
     }
     vector<vector<vector<string>>> allpaths;
