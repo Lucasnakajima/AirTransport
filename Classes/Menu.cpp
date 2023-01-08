@@ -1,25 +1,4 @@
-//
-// Pela minha parte, tu tens que fazer o case 1 do menu::run(),
-// o usuário tem que procurar os voo de um local a outro, temos
-// 3 maneiras de achar o Local:
-//1: Codigo do aeroporto: Método Database::path()
-//2: Cidade dos aeroportos: Método Database::cityPath()
-//3: Raio das coordenadas: Método Database::coordsPath()
-// No método 2, implementar o país para as cidades. (extremamente simples)
-// Para TODOS os métodos o usuário pode escolher ou não Airlines específicas
-// pelo código das mesmas, através de um vetor de string. Caso ele não queira
-//deverá por um vetor VAZIO para o programa funcionar.
-// O método Database::path() é usado em todos os métodos, sendo ele o principal
-// para achar os melhores caminhos.
-//Os loops no CASE1, são para dar print nas rotas + airlines usadas.
-// qualquer dúvida mandar no email: ChupaMinhaPiroca.com
-//
-//vector<string> airlines;
-//airlines.push_back("TAP");
-//airlines.push_back("TAM");
-//vector<vector<vector<string>>> path = database.path("MAO", "LIS", airlines);
-//vector<vector<vector<string>>> path = database.cityPath("Paris", "Manaus", airlines);
-
+#include <unistd.h>
 #include "Menu.h"
 
 Menu::Menu() {
@@ -49,17 +28,20 @@ void Menu::run() {
                 "||  Por coordenada(aeroportos a menos de 50km)    [11] |  Voos a partir de um aeroporto                   [21]  ||\n"
                 "||  Por aeroportos especificos                    [12] |  Companhias areas em um aeroporto                [22]  ||\n"
                 "||  Por cidade (todos os aeroportos na cidade     [13] |  Destinos a partir de um aeroporto               [23]  ||\n"
-                "||                                                     |  Quantos locais atingiveis usando                [24]  ||\n"
+                "||                                                     |  Quantos aeroportos atingiveis usando            [24]  ||\n"
                 "||                                                     |  um maximo Y de voos                                   ||\n"
                 "||==============================================================================================================||\n"
                 "||                                                   EXIT [0]                                                   ||\n"
                 "||==============================================================================================================||\n"
                 "Choose an option: ";
-        int n;
+        int choice;
+        string airport;
         vector<string> airlines;
-        cin >> n;
-        switch(n){
-            case 11:
+        cin >> choice;
+        vector<int> values = {0,11,12,13,21,22,23,24};
+        if(!inputTest(choice,values)) continue;
+        switch(choice){
+            case 11:{
                 double latsrc, longsrc, latdest, longdest;
                 cout << "Digite a latitude do local de partida:";
                 cin >> latsrc;
@@ -72,7 +54,7 @@ void Menu::run() {
                 airlines = airlineSubmenu();
                 pathByCoordinates(latsrc,longsrc,latdest, longdest, airlines);
                 system("pause");
-                break;
+                break;}
             case 12:{
                 string srcAirport, destAirport;
                 cout << "Digite o aeroporto de partida:";
@@ -97,10 +79,40 @@ void Menu::run() {
                 pathByCity(srcCity,srcCountry,destCity, destCountry, airlines);
                 system("pause");
                 break;}
-            case 0:
+                case 21:
+                    cout << "Digite o aeroporto que deseja pesquisar:";
+                    cin >> airport;
+                    flightsByAirport(airport);
+                    system("pause");
+                    break;
+                    case 22:
+                        cout << "Digite o aeroporto que deseja pesquisar:";
+                        cin >> airport;
+                        airlinesByAirport(airport);
+                        system("pause");
+                        break;
+            case 23:
+                cout << "Digite o aeroporto que deseja pesquisar:";
+                cin >> airport;
+                cityByAirport(airport);
+                system("pause");
+                break;
+
+            case 24:
+                int y;
+                cout << "Digite o aeroporto que deseja pesquisar:";
+                cin >> airport;
+                cout << "Digite o valor de y:";
+                cin >> y;
+                airportMaxYByAirport(airport, y);
+                system("pause");
+                break;
+
+                case 0:
                 exit(0);
             default:
-                exit(0);
+                cout << "Valor invalido!! Tente denovo!";
+                system("pause");
         }
 
     }
@@ -109,34 +121,39 @@ void Menu::run() {
 vector<string> Menu:: airlineSubmenu(){
     vector<string> airlines;
     char n;
-    cout << "Deseja utilizar companhias aereas especificas na sua rota?Y/N\n";
-    cin >> n;
-    if (n == 'y' or n=='Y'){
-        int quant;
-        string comp;
-        cout << "Digite quantas companias estao em sua rota: ";
-        cin >> quant;
-        for (int i=1; i<=quant; i++){
-            cout << "Companhia " << i << "/" << quant << ":";
-            cin >> comp;
-            airlines.push_back(comp);
+    while(true) {
+        cout << "Deseja utilizar companhias aereas especificas na sua rota?Y/N\n";
+        cin >> n;
+        if (n == 'y' or n == 'Y') {
+            int quant;
+            string comp;
+            cout << "Digite quantas companias estao em sua rota: ";
+            cin >> quant;
+            for (int i = 1; i <= quant; i++) {
+                cout << "Companhia " << i << "/" << quant << ":";
+                cin >> comp;
+                airlines.push_back(comp);
+            }
+            return airlines;
+        }
+        else if (n == 'n' or n == 'N') return airlines;
+        else{
+            cout << "Escolha invalida! Tente novamente!";
+            sleep (1);
         }
     }
-    return airlines;
 }
 
 void Menu:: pathByCoordinates(double srcLati, double srcLongi, double destLati, double destLongi, vector<string> airlines){
     vector<vector<vector<string>>> path = database.coordsPath(srcLati, srcLongi, destLati, destLongi, airlines);
-    cout << "================================\n"
-    "||     Voce possui " << path.size() << " rotas    ||\n"
-                                            "================================\n\n";
+    cout << "================================\n||     Voce possui " << path.size() << " rotas    ||\n================================\n\n";
 
     for(int k = 0; k<path.size(); k++) {
         cout << "=======Rota " << k+1 << "=======\n";
         for (int i = 0; i < path[k].size()-1; i++) {
             cout << "De " << path[k][i][0] << " para " << path[k][i+1][0] << ". Podendo ir com as seguintes companias aereas:\n";
             for (int j = 1; j < path[k][i].size(); j++) {
-                cout << " --> " << path[k][i][j] << "\n";
+                cout << " --> " << path[k][i][j];
             }
             cout << "\n";
         }
@@ -155,7 +172,7 @@ void Menu:: pathByAirport(string srcAirport, string destAirport, vector<string> 
         for (int i = 0; i < path[k].size()-1; i++) {
             cout << "De " << path[k][i][0] << " para " << path[k][i+1][0] << ". Podendo ir com as seguintes companias aereas:\n";
             for (int j = 1; j < path[k][i].size(); j++) {
-                cout << " --> " << path[k][i][j] << "\n";
+                cout << " --> " << path[k][i][j];
             }
             cout << "\n";
         }
@@ -180,4 +197,105 @@ void Menu:: pathByCity(string srcCity, string srcCountry, string destCity, strin
         }
         cout << "\n";
     }
+}
+
+void Menu:: flightsByAirport(string airport){
+    unordered_set<string> dest = database.airportList(airport,1);
+    cout << "Existem " << dest.size() << " voos a partir deste aerorporto\n";
+    char n;
+    while(true) {
+        cout << "Deseja lista-los?Y/N\n";
+        cin >> n;
+        if (n == 'y' or n == 'Y') {
+            for(auto i: dest){
+                cout << airport << "-->" << i << "\n";
+            }
+            return;
+        }
+        else if (n == 'n' or n == 'N') return;
+        else{
+            cout << "Escolha invalida! Tente novamente!";
+            sleep (1);
+        }
+    }
+}
+
+void Menu:: airlinesByAirport(string airport){
+    unordered_set<string> dest = database.airportList(airport,2);
+    cout << "Existem " << dest.size() << " linhas aereas que tem voos nesse aerorporto\n";
+    char n;
+    while(true) {
+        cout << "Deseja lista-las?Y/N\n";
+        cin >> n;
+        if (n == 'y' or n == 'Y') {
+            for(auto i: dest){
+                cout << i << "\n";
+            }
+            return;
+        }
+        else if (n == 'n' or n == 'N') return;
+        else{
+            cout << "Escolha invalida! Tente novamente!";
+            sleep (1);
+        }
+    }
+}
+
+void Menu:: cityByAirport(string airport){
+    unordered_set<string> dest = database.airportList(airport,3);
+    cout << "Existem " << dest.size() << " cidades atingiveis a partir deste aerorporto\n";
+    char n;
+    while(true) {
+        cout << "Deseja lista-las?Y/N\n";
+        cin >> n;
+        if (n == 'y' or n == 'Y') {
+            for(auto i: dest){
+                cout << i << "\n";
+            }
+            return;
+        }
+        else if (n == 'n' or n == 'N') return;
+        else{
+            cout << "Escolha invalida! Tente novamente!";
+            sleep (1);
+        }
+    }
+}
+
+void Menu:: airportMaxYByAirport(string airport, int y){
+    unordered_set<string> dest = database.airportMaxY(airport,y);
+    cout << "Existem " << dest.size() << " aeroportos atingiveis a "<< y << " voos de distancia\n";
+    char n;
+    while(true) {
+        cout << "Deseja lista-los?Y/N\n";
+        cin >> n;
+        if (n == 'y' or n == 'Y') {
+            for(auto i: dest){
+                cout << airport << "-->" << i << "\n";
+            }
+            return;
+        }
+        else if (n == 'n' or n == 'N') return;
+        else{
+            cout << "Escolha invalida! Tente novamente!";
+            sleep (1);
+        }
+    }
+}
+
+bool Menu:: inputTest(char choice ,vector<int> values) {
+    if (cin.fail() || cin.peek() != '\n') {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Invalid input! Try again!" << endl;
+        sleep(1);
+        return false;
+    }
+    //binary_search(values.begin(),values.end(),choice);
+    if (!binary_search(values.begin(),values.end(),choice)) {
+        cout << "Invalid choice! Try again!" << endl;
+        sleep(1);
+        return false;
+    }
+    return true;
 }

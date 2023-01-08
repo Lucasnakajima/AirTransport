@@ -30,6 +30,10 @@ public:
     double coordsdist(double lat1, double lon1, double lat2, double lon2);
     vector<vector<vector<string>>>cityPath(string srcCity, string srcCountry, string destCity, string destCountry, vector<string> &airlines);
     vector<vector<vector<string>>> coordsPath(double srcLati, double srcLongi, double destLati, double destLongi, vector<string>& airlines);
+
+    unordered_set<string> airportMaxY(string airport, int y);
+
+    unordered_set<string> airportList(string airport, int code);
 };
 
 

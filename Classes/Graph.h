@@ -28,7 +28,7 @@ class Graph {
 
     struct Node {
         unordered_map<int,Edge> adj; // The list of outgoing edges (to adjacent nodes)
-        bool visited;// As the node been visited on a search?
+        bool visited;// Has the node been visited on a search?
         int color;
         int distance;
         Airport airport;

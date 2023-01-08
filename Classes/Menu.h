@@ -23,6 +23,16 @@ public:
     void pathByAirport(string srcAirport, string destAirport, vector<string> airlines);
 
     vector<string> airlineSubmenu();
+
+    bool inputTest(char choice, vector<int> values);
+
+    void flightsByAirport(string airport);
+
+    void airlinesByAirport(string airport);
+
+    void cityByAirport(string airport);
+
+    void airportMaxYByAirport(string airport, int y);
 };
 
 

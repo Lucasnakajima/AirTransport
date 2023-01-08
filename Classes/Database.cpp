@@ -201,3 +201,36 @@ vector<vector<vector<string>>> Database::coordsPath(double srcLati, double srcLo
     return allpaths;
 }
 
+unordered_set<string> Database:: airportList(string airport, int code){
+    unordered_set<string> destinos;
+    int index = airports.find(airport)->second.getGraphIndex();
+    int destindex;
+    for(auto i = Everything.nodes[index].adj.begin(); i != Everything.nodes[index].adj.end(); i++) {
+        switch (code) {
+            case 1:{
+                destinos.insert(Everything.nodes[i->first].airport.getCode());
+                break;}
+            case 2:
+                for(int j=0 ; j<i->second.Airlines.size(); j++) destinos.insert(i->second.Airlines[j]);
+                break;
+            case 3:
+                destinos.insert(Everything.nodes[i->first].airport.getCity());
+                break;
+            default:
+                break;
+        };
+    }
+    return destinos;
+}
+
+unordered_set<string> Database:: airportMaxY(string airport, int y){
+    unordered_set<string> destinos;
+    int index = airports.find(airport)->second.getGraphIndex();
+    Everything.bfs(index);
+    for(int i=1; i< Everything.nodes.size(); i++){
+        if(Everything.nodes[i].distance <= y){
+            destinos.insert(Everything.nodes[i].airport.getCode());
+        }
+    }
+    return destinos;
+}
