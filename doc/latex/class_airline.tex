@@ -1,0 +1,146 @@
+\hypertarget{class_airline}{}\doxysection{Airline Class Reference}
+\label{class_airline}\index{Airline@{Airline}}
+
+
+Classe para as Companhias Aéreas.  
+
+
+
+
+{\ttfamily \#include $<$Airline.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_airline_a89c3423239e6b5524afe7d194720400d}{set\+Code}} (string Code)
+\begin{DoxyCompactList}\small\item\em Set Code with. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_airline_a9a42eb517630bd4b01025395aa2103d4}{set\+Name}} (string Name)
+\begin{DoxyCompactList}\small\item\em Set Name with. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_airline_afad15409a4bcde85f7074957e1c614a2}{set\+Callsign}} (string Callsign)
+\begin{DoxyCompactList}\small\item\em Set Callsign with. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_airline_a43f07a63180c883bc3c548340efa2187}{set\+Country}} (string Country)
+\begin{DoxyCompactList}\small\item\em Set Country with. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airline_a2e6b50faab52305322e3197c259e2778}{Airline}} (string Code, string Name, string Country)
+\begin{DoxyCompactList}\small\item\em Creates a new Class without Callsign. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airline_a2bc0b55dd5d3447121bfea7fe17d3222}{Airline}} (string Code, string Name, string Callsign, string Country)
+\begin{DoxyCompactList}\small\item\em create a new Class with \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_airline_a41ef613d6b390c463821b9ae43d9ec84}{get\+Code}} () const
+\item 
+string \mbox{\hyperlink{class_airline_a24f8b8e17d2d10af233b12671673bcd8}{get\+Name}} () const
+\item 
+bool \mbox{\hyperlink{class_airline_a2878d913f476d772c723dba43e40d5a0}{operator==}} (const \mbox{\hyperlink{class_airline}{Airline}} \&a1) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe para as Companhias Aéreas. 
+
+Uma Companhia é identificada pelo seu código ICAO. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_airline_a2e6b50faab52305322e3197c259e2778}\label{class_airline_a2e6b50faab52305322e3197c259e2778}} 
+\index{Airline@{Airline}!Airline@{Airline}}
+\index{Airline@{Airline}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{Airline()}{Airline()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Airline\+::\+Airline (\begin{DoxyParamCaption}\item[{string}]{Code,  }\item[{string}]{Name,  }\item[{string}]{Country }\end{DoxyParamCaption})}
+
+
+
+Creates a new Class without Callsign. 
+
+\mbox{\Hypertarget{class_airline_a2bc0b55dd5d3447121bfea7fe17d3222}\label{class_airline_a2bc0b55dd5d3447121bfea7fe17d3222}} 
+\index{Airline@{Airline}!Airline@{Airline}}
+\index{Airline@{Airline}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{Airline()}{Airline()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Airline\+::\+Airline (\begin{DoxyParamCaption}\item[{string}]{Code,  }\item[{string}]{Name,  }\item[{string}]{Callsign,  }\item[{string}]{Country }\end{DoxyParamCaption})}
+
+
+
+create a new Class with 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Callsign} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_airline_a41ef613d6b390c463821b9ae43d9ec84}\label{class_airline_a41ef613d6b390c463821b9ae43d9ec84}} 
+\index{Airline@{Airline}!getCode@{getCode}}
+\index{getCode@{getCode}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily string Airline\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_airline_a24f8b8e17d2d10af233b12671673bcd8}\label{class_airline_a24f8b8e17d2d10af233b12671673bcd8}} 
+\index{Airline@{Airline}!getName@{getName}}
+\index{getName@{getName}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Airline\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_airline_a2878d913f476d772c723dba43e40d5a0}\label{class_airline_a2878d913f476d772c723dba43e40d5a0}} 
+\index{Airline@{Airline}!operator==@{operator==}}
+\index{operator==@{operator==}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Airline\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_airline}{Airline}} \&}]{a1 }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{class_airline_afad15409a4bcde85f7074957e1c614a2}\label{class_airline_afad15409a4bcde85f7074957e1c614a2}} 
+\index{Airline@{Airline}!setCallsign@{setCallsign}}
+\index{setCallsign@{setCallsign}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{setCallsign()}{setCallsign()}}
+{\footnotesize\ttfamily void Airline\+::set\+Callsign (\begin{DoxyParamCaption}\item[{string}]{Callsign }\end{DoxyParamCaption})}
+
+
+
+Set Callsign with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Callsign} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_airline_a89c3423239e6b5524afe7d194720400d}\label{class_airline_a89c3423239e6b5524afe7d194720400d}} 
+\index{Airline@{Airline}!setCode@{setCode}}
+\index{setCode@{setCode}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{setCode()}{setCode()}}
+{\footnotesize\ttfamily void Airline\+::set\+Code (\begin{DoxyParamCaption}\item[{string}]{Code }\end{DoxyParamCaption})}
+
+
+
+Set Code with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Code} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_airline_a43f07a63180c883bc3c548340efa2187}\label{class_airline_a43f07a63180c883bc3c548340efa2187}} 
+\index{Airline@{Airline}!setCountry@{setCountry}}
+\index{setCountry@{setCountry}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{setCountry()}{setCountry()}}
+{\footnotesize\ttfamily void Airline\+::set\+Country (\begin{DoxyParamCaption}\item[{string}]{Country }\end{DoxyParamCaption})}
+
+
+
+Set Country with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Country} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_airline_a9a42eb517630bd4b01025395aa2103d4}\label{class_airline_a9a42eb517630bd4b01025395aa2103d4}} 
+\index{Airline@{Airline}!setName@{setName}}
+\index{setName@{setName}!Airline@{Airline}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Airline\+::set\+Name (\begin{DoxyParamCaption}\item[{string}]{Name }\end{DoxyParamCaption})}
+
+
+
+Set Name with. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Name} & \\
+\hline
+\end{DoxyParams}

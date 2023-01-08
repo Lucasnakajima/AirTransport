@@ -1,0 +1,42 @@
+\hypertarget{_menu_8h_source}{}\doxysection{Menu.\+h}
+\label{_menu_8h_source}\index{Classes/Menu.h@{Classes/Menu.h}}
+\mbox{\hyperlink{_menu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Utilizador on 27-\/Dec-\/22.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AIRTRANSPORT\_MENU\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AIRTRANSPORT\_MENU\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_database_8h}{Database.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_menu}{Menu}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_database}{Database}} database;}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_menu_ad466dd83355124a6ed958430450bfe94}{Menu}}();}
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a35656cd130e24d69383a5c9d0a73a38c}{run}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a0b90a23fb11a5bda11a8e89db2995558}{pathByCoordinates}}(\textcolor{keywordtype}{double} srcLati, \textcolor{keywordtype}{double} srcLongi, \textcolor{keywordtype}{double} destLati, \textcolor{keywordtype}{double} desLongi, vector<string> airlines);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a9466336c8e9bad3445837ba61fc5e392}{pathByCity}}(\textcolor{keywordtype}{string} srcCity, \textcolor{keywordtype}{string} srcCountry, \textcolor{keywordtype}{string} destCity, \textcolor{keywordtype}{string} destCountry, vector<string> airlines);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a57b1e70b5b6c80b3feee887713b952a5}{pathByAirport}}(\textcolor{keywordtype}{string} srcAirport, \textcolor{keywordtype}{string} destAirport, vector<string> airlines);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     vector<string> \mbox{\hyperlink{class_menu_a7bb278012fc8fbaf58768e8bc6f81534}{airlineSubmenu}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_menu_a45c46b7c959211a176f7c016c1fedd0d}{inputTest}}(\textcolor{keywordtype}{char} choice, vector<int> values);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a7af89bcbe56b07d2520b64671fce52a6}{flightsByAirport}}(\textcolor{keywordtype}{string} airport);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a8fcf29227a3fd2baa8e25ca0d273de1c}{airlinesByAirport}}(\textcolor{keywordtype}{string} airport);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_a23b82d91fb59e35ee41b28da44a7ea2f}{cityByAirport}}(\textcolor{keywordtype}{string} airport);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_menu_ac0c184d3a4bc1a5a39cacba84425beeb}{airportMaxYByAirport}}(\textcolor{keywordtype}{string} airport, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{36 \};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AIRTRANSPORT\_MENU\_H}}
+
+\end{DoxyCode}

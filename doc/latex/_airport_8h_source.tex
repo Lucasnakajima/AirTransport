@@ -1,0 +1,59 @@
+\hypertarget{_airport_8h_source}{}\doxysection{Airport.\+h}
+\label{_airport_8h_source}\index{Classes/Airport.h@{Classes/Airport.h}}
+\mbox{\hyperlink{_airport_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Utilizador on 26-\/Dec-\/22.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AIRTRANSPORT\_AIRPORT\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AIRTRANSPORT\_AIRPORT\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{9 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_airport}{Airport}} \{}
+\DoxyCodeLine{14 \textcolor{keyword}{private}:}
+\DoxyCodeLine{15     \textcolor{keywordtype}{string} Code; }
+\DoxyCodeLine{16     \textcolor{keywordtype}{string} Name; }
+\DoxyCodeLine{17     \textcolor{keywordtype}{string} City; }
+\DoxyCodeLine{18     \textcolor{keywordtype}{string} Country; }
+\DoxyCodeLine{19     \textcolor{keywordtype}{float} Latitude; }
+\DoxyCodeLine{20     \textcolor{keywordtype}{float} Longitude; }
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} graphIndex; }
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airport_a443b3fdaaa050dd7bca110b5a804c4dd}{setCode}}(\textcolor{keywordtype}{string} Code);}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airport_a2bc70d6499440701cd9c818a91083f70}{setName}}(\textcolor{keywordtype}{string} Name);}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airport_a8774cc779173c7fbce312bc29916cf32}{setCity}}(\textcolor{keywordtype}{string} City);}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airport_a3a11e23c0f1c00e45d20b50b7b39d95e}{setCountry}}(\textcolor{keywordtype}{string} Country);}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airport_ac6ec008b33e5089d3cb820ee79c7a248}{setLatitude}}(\textcolor{keywordtype}{float} Latitude);}
+\DoxyCodeLine{35     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airport_af994dc06fad5f59330e8ed6bfc7e49d8}{setLongitude}}(\textcolor{keywordtype}{float} Longitude);}
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airport_ae795a4aef89ba34d2a12993e693e57ee}{setGraphIndex}}(\textcolor{keywordtype}{int} index);}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_airport_ad1369e1d47c87e205f1718b853a66d54}{getCode}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_airport_a93efcd09328d24469d97a81e8048b776}{getName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{42     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_airport_a7dc058132336ea1b211323730fc44148}{getCity}}();}
+\DoxyCodeLine{43     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_airport_a82e555b62c9af6c729a6d3c7fb8ae8c4}{getCountry}}();}
+\DoxyCodeLine{44     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_airport_a764c51e648dd4bdb37385ba46036a034}{getLatitude}}();}
+\DoxyCodeLine{45     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_airport_a316e448a2889e83a248dd366e7c5ad71}{getLongitude}}();}
+\DoxyCodeLine{46     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_airport_a4965bbea6963f02f44f59154bdee750c}{getGraphIndex}}();}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_airport_a20b78919ca9d3fd3a38bfdc4d88a80f8}{operator() }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_airport}{Airport}}\& a1, \textcolor{keyword}{const} \mbox{\hyperlink{class_airport}{Airport}}\& a2) \textcolor{keyword}{const};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_airport_a0b1b3901399809db740ecde73200103f}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_airport}{Airport}}\& a1) \textcolor{keyword}{const};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \mbox{\hyperlink{class_airport_a2fc0f2402c94225b9deaf76176bb887f}{Airport}}(\textcolor{keywordtype}{string} Code, \textcolor{keywordtype}{string} Name, \textcolor{keywordtype}{string} City, \textcolor{keywordtype}{string} Country, \textcolor{keywordtype}{float} Latitude, \textcolor{keywordtype}{float} Longitude);}
+\DoxyCodeLine{52     \mbox{\hyperlink{class_airport_a2fc0f2402c94225b9deaf76176bb887f}{Airport}}();}
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_airport__hash}{Airport\_hash}}\{}
+\DoxyCodeLine{55     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_airport__hash_a23b568f46d8b5ef8a63571ae6dbd4e29}{operator() }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_airport}{Airport}}\& obj)\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{56         \textcolor{keywordtype}{string} s1 = obj.\mbox{\hyperlink{class_airport_a93efcd09328d24469d97a81e8048b776}{getName}}();}
+\DoxyCodeLine{57         \textcolor{keywordtype}{size\_t} v = 0;}
+\DoxyCodeLine{58         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i=0; i<s1.size();i++)}
+\DoxyCodeLine{59             v = 37*v + s1[i];}
+\DoxyCodeLine{60         \textcolor{keywordflow}{return} v;}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62 \};}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AIRTRANSPORT\_AIRPORT\_H}}
+
+\end{DoxyCode}

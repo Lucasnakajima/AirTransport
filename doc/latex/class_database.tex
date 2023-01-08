@@ -1,0 +1,117 @@
+\hypertarget{class_database}{}\doxysection{Database Class Reference}
+\label{class_database}\index{Database@{Database}}
+
+
+Classe para a \mbox{\hyperlink{class_database}{Database}}.  
+
+
+
+
+{\ttfamily \#include $<$Database.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_database_aa0f1bb3df6528683af020ba55bb640e6}{read\+Airports}} ()
+\item 
+void \mbox{\hyperlink{class_database_a0d023d1c581fe9546eaddb0ae7a655f7}{read\+Airlines}} ()
+\item 
+\mbox{\hyperlink{class_database_a4703c80e6969d33565ea340f768fdadf}{Database}} ()
+\item 
+void \mbox{\hyperlink{class_database_a279a05ea250c5fb6c30d0c818fb7be8e}{graph\+Everything}} ()
+\item 
+vector$<$ vector$<$ vector$<$ string $>$ $>$ $>$ \mbox{\hyperlink{class_database_a7a44b6bdb3e2997c1d5d7741205dd360}{path}} (string src, string dest, vector$<$ string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Os melhores caminhos no grafo, com os aeroportos. Usando o algoritmo de Djikstra de complexidade O(\+V$^\wedge$2) \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_database_a7ef51f245e1fba51d588cf322290383e}{coordsdist}} (double lat1, double lon1, double lat2, double lon2)
+\item 
+vector$<$ vector$<$ vector$<$ string $>$ $>$ $>$ \mbox{\hyperlink{class_database_ac2c2b43ec07aa92cce5c6bc08e9221fc}{city\+Path}} (string src\+City, string src\+Country, string dest\+City, string dest\+Country, vector$<$ string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Os melhores caminhos no grafo, com as cidades aeroportos. Usando o algoritmo de Djikstra de complexidade O(\+V$^\wedge$2) \end{DoxyCompactList}\item 
+vector$<$ vector$<$ vector$<$ string $>$ $>$ $>$ \mbox{\hyperlink{class_database_a0673f38a83f2e45526f6e96b3edf5d58}{coords\+Path}} (double src\+Lati, double src\+Longi, double dest\+Lati, double dest\+Longi, vector$<$ string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Os melhores caminhos no grafo, com as coordenadas dos aeroportos. Usando o algoritmo de Djikstra de complexidade O(\+V$^\wedge$2) \end{DoxyCompactList}\item 
+unordered\+\_\+set$<$ string $>$ \mbox{\hyperlink{class_database_a570a58fc4d8c61b48c92695e95b22466}{airport\+MaxY}} (string airport, int y)
+\item 
+unordered\+\_\+set$<$ string $>$ \mbox{\hyperlink{class_database_a8b4f8f1b18bdd72d8f0e44699c62f4b8}{airport\+List}} (string airport, int code)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe para a \mbox{\hyperlink{class_database}{Database}}. 
+
+A database é apenas para gerenciamento das varíaveis. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_database_a4703c80e6969d33565ea340f768fdadf}\label{class_database_a4703c80e6969d33565ea340f768fdadf}} 
+\index{Database@{Database}!Database@{Database}}
+\index{Database@{Database}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{Database()}{Database()}}
+{\footnotesize\ttfamily Database\+::\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_database_a8b4f8f1b18bdd72d8f0e44699c62f4b8}\label{class_database_a8b4f8f1b18bdd72d8f0e44699c62f4b8}} 
+\index{Database@{Database}!airportList@{airportList}}
+\index{airportList@{airportList}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{airportList()}{airportList()}}
+{\footnotesize\ttfamily unordered\+\_\+set$<$ string $>$ Database\+::airport\+List (\begin{DoxyParamCaption}\item[{string}]{airport,  }\item[{int}]{code }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_database_a570a58fc4d8c61b48c92695e95b22466}\label{class_database_a570a58fc4d8c61b48c92695e95b22466}} 
+\index{Database@{Database}!airportMaxY@{airportMaxY}}
+\index{airportMaxY@{airportMaxY}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{airportMaxY()}{airportMaxY()}}
+{\footnotesize\ttfamily unordered\+\_\+set$<$ string $>$ Database\+::airport\+MaxY (\begin{DoxyParamCaption}\item[{string}]{airport,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_database_ac2c2b43ec07aa92cce5c6bc08e9221fc}\label{class_database_ac2c2b43ec07aa92cce5c6bc08e9221fc}} 
+\index{Database@{Database}!cityPath@{cityPath}}
+\index{cityPath@{cityPath}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{cityPath()}{cityPath()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ vector$<$ string $>$ $>$ $>$ Database\+::city\+Path (\begin{DoxyParamCaption}\item[{string}]{src\+City,  }\item[{string}]{src\+Country,  }\item[{string}]{dest\+City,  }\item[{string}]{dest\+Country,  }\item[{vector$<$ string $>$ \&}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Os melhores caminhos no grafo, com as cidades aeroportos. Usando o algoritmo de Djikstra de complexidade O(\+V$^\wedge$2) 
+
+\mbox{\Hypertarget{class_database_a7ef51f245e1fba51d588cf322290383e}\label{class_database_a7ef51f245e1fba51d588cf322290383e}} 
+\index{Database@{Database}!coordsdist@{coordsdist}}
+\index{coordsdist@{coordsdist}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{coordsdist()}{coordsdist()}}
+{\footnotesize\ttfamily double Database\+::coordsdist (\begin{DoxyParamCaption}\item[{double}]{lat1,  }\item[{double}]{lon1,  }\item[{double}]{lat2,  }\item[{double}]{lon2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_database_a0673f38a83f2e45526f6e96b3edf5d58}\label{class_database_a0673f38a83f2e45526f6e96b3edf5d58}} 
+\index{Database@{Database}!coordsPath@{coordsPath}}
+\index{coordsPath@{coordsPath}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{coordsPath()}{coordsPath()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ vector$<$ string $>$ $>$ $>$ Database\+::coords\+Path (\begin{DoxyParamCaption}\item[{double}]{src\+Lati,  }\item[{double}]{src\+Longi,  }\item[{double}]{dest\+Lati,  }\item[{double}]{dest\+Longi,  }\item[{vector$<$ string $>$ \&}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Os melhores caminhos no grafo, com as coordenadas dos aeroportos. Usando o algoritmo de Djikstra de complexidade O(\+V$^\wedge$2) 
+
+\mbox{\Hypertarget{class_database_a279a05ea250c5fb6c30d0c818fb7be8e}\label{class_database_a279a05ea250c5fb6c30d0c818fb7be8e}} 
+\index{Database@{Database}!graphEverything@{graphEverything}}
+\index{graphEverything@{graphEverything}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{graphEverything()}{graphEverything()}}
+{\footnotesize\ttfamily void Database\+::graph\+Everything (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_database_a7a44b6bdb3e2997c1d5d7741205dd360}\label{class_database_a7a44b6bdb3e2997c1d5d7741205dd360}} 
+\index{Database@{Database}!path@{path}}
+\index{path@{path}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{path()}{path()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ vector$<$ string $>$ $>$ $>$ Database\+::path (\begin{DoxyParamCaption}\item[{string}]{src,  }\item[{string}]{dest,  }\item[{vector$<$ string $>$ \&}]{airlines }\end{DoxyParamCaption})}
+
+
+
+Os melhores caminhos no grafo, com os aeroportos. Usando o algoritmo de Djikstra de complexidade O(\+V$^\wedge$2) 
+
+\mbox{\Hypertarget{class_database_a0d023d1c581fe9546eaddb0ae7a655f7}\label{class_database_a0d023d1c581fe9546eaddb0ae7a655f7}} 
+\index{Database@{Database}!readAirlines@{readAirlines}}
+\index{readAirlines@{readAirlines}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{readAirlines()}{readAirlines()}}
+{\footnotesize\ttfamily void Database\+::read\+Airlines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_database_aa0f1bb3df6528683af020ba55bb640e6}\label{class_database_aa0f1bb3df6528683af020ba55bb640e6}} 
+\index{Database@{Database}!readAirports@{readAirports}}
+\index{readAirports@{readAirports}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{readAirports()}{readAirports()}}
+{\footnotesize\ttfamily void Database\+::read\+Airports (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

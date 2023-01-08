@@ -1,0 +1,45 @@
+\hypertarget{_airline_8h_source}{}\doxysection{Airline.\+h}
+\label{_airline_8h_source}\index{Classes/Airline.h@{Classes/Airline.h}}
+\mbox{\hyperlink{_airline_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Utilizador on 26-\/Dec-\/22.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AIRTRANSPORT\_AIRLINE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AIRTRANSPORT\_AIRLINE\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{8 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_airline}{Airline}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{string} Code; }
+\DoxyCodeLine{15     \textcolor{keywordtype}{string} Name; }
+\DoxyCodeLine{16     \textcolor{keywordtype}{string} Callsign; }
+\DoxyCodeLine{17     \textcolor{keywordtype}{string} Country; }
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airline_a89c3423239e6b5524afe7d194720400d}{setCode}}(\textcolor{keywordtype}{string} Code);}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airline_a9a42eb517630bd4b01025395aa2103d4}{setName}}(\textcolor{keywordtype}{string} Name);}
+\DoxyCodeLine{24     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airline_afad15409a4bcde85f7074957e1c614a2}{setCallsign}}(\textcolor{keywordtype}{string} Callsign);}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_airline_a43f07a63180c883bc3c548340efa2187}{setCountry}}(\textcolor{keywordtype}{string} Country);}
+\DoxyCodeLine{28     \mbox{\hyperlink{class_airline}{Airline}}(\textcolor{keywordtype}{string} Code, \textcolor{keywordtype}{string} Name, \textcolor{keywordtype}{string} Country);}
+\DoxyCodeLine{30     \mbox{\hyperlink{class_airline}{Airline}}(\textcolor{keywordtype}{string} Code, \textcolor{keywordtype}{string} Name,\textcolor{keywordtype}{string} Callsign, \textcolor{keywordtype}{string} Country);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_airline_a41ef613d6b390c463821b9ae43d9ec84}{getCode}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{keywordtype}{string} \mbox{\hyperlink{class_airline_a24f8b8e17d2d10af233b12671673bcd8}{getName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_airline_a2878d913f476d772c723dba43e40d5a0}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_airline}{Airline}} \&a1) \textcolor{keyword}{const};}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_airline__hash}{Airline\_hash}}\{}
+\DoxyCodeLine{39     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{struct_airline__hash_a2cf18e813b19ea564ab76d1ed2af2d30}{operator() }}(\textcolor{keyword}{const} \mbox{\hyperlink{class_airline}{Airline}}\& obj)\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{40         \textcolor{keywordtype}{string} s1 = obj.\mbox{\hyperlink{class_airline_a24f8b8e17d2d10af233b12671673bcd8}{getName}}();}
+\DoxyCodeLine{41         \textcolor{keywordtype}{size\_t} v = 0;}
+\DoxyCodeLine{42         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i=0; i<s1.size();i++)}
+\DoxyCodeLine{43             v = 37*v + s1[i];}
+\DoxyCodeLine{44         \textcolor{keywordflow}{return} v;}
+\DoxyCodeLine{45     \}}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AIRTRANSPORT\_AIRLINE\_H}}
+
+\end{DoxyCode}

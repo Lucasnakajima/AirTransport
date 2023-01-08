@@ -1,0 +1,113 @@
+\hypertarget{class_menu}{}\doxysection{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+
+
+Classe para o \mbox{\hyperlink{class_menu}{Menu}}.  
+
+
+
+
+{\ttfamily \#include $<$Menu.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_ad466dd83355124a6ed958430450bfe94}{Menu}} ()
+\item 
+void \mbox{\hyperlink{class_menu_a35656cd130e24d69383a5c9d0a73a38c}{run}} ()
+\item 
+void \mbox{\hyperlink{class_menu_a0b90a23fb11a5bda11a8e89db2995558}{path\+By\+Coordinates}} (double src\+Lati, double src\+Longi, double dest\+Lati, double des\+Longi, vector$<$ string $>$ airlines)
+\item 
+void \mbox{\hyperlink{class_menu_a9466336c8e9bad3445837ba61fc5e392}{path\+By\+City}} (string src\+City, string src\+Country, string dest\+City, string dest\+Country, vector$<$ string $>$ airlines)
+\item 
+void \mbox{\hyperlink{class_menu_a57b1e70b5b6c80b3feee887713b952a5}{path\+By\+Airport}} (string src\+Airport, string dest\+Airport, vector$<$ string $>$ airlines)
+\item 
+vector$<$ string $>$ \mbox{\hyperlink{class_menu_a7bb278012fc8fbaf58768e8bc6f81534}{airline\+Submenu}} ()
+\item 
+bool \mbox{\hyperlink{class_menu_a45c46b7c959211a176f7c016c1fedd0d}{input\+Test}} (char choice, vector$<$ int $>$ values)
+\item 
+void \mbox{\hyperlink{class_menu_a7af89bcbe56b07d2520b64671fce52a6}{flights\+By\+Airport}} (string airport)
+\item 
+void \mbox{\hyperlink{class_menu_a8fcf29227a3fd2baa8e25ca0d273de1c}{airlines\+By\+Airport}} (string airport)
+\item 
+void \mbox{\hyperlink{class_menu_a23b82d91fb59e35ee41b28da44a7ea2f}{city\+By\+Airport}} (string airport)
+\item 
+void \mbox{\hyperlink{class_menu_ac0c184d3a4bc1a5a39cacba84425beeb}{airport\+Max\+YBy\+Airport}} (string airport, int y)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe para o \mbox{\hyperlink{class_menu}{Menu}}. 
+
+Um menu apenas apresenta as opcoes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_ad466dd83355124a6ed958430450bfe94}\label{class_menu_ad466dd83355124a6ed958430450bfe94}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_a8fcf29227a3fd2baa8e25ca0d273de1c}\label{class_menu_a8fcf29227a3fd2baa8e25ca0d273de1c}} 
+\index{Menu@{Menu}!airlinesByAirport@{airlinesByAirport}}
+\index{airlinesByAirport@{airlinesByAirport}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{airlinesByAirport()}{airlinesByAirport()}}
+{\footnotesize\ttfamily void Menu\+::airlines\+By\+Airport (\begin{DoxyParamCaption}\item[{string}]{airport }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a7bb278012fc8fbaf58768e8bc6f81534}\label{class_menu_a7bb278012fc8fbaf58768e8bc6f81534}} 
+\index{Menu@{Menu}!airlineSubmenu@{airlineSubmenu}}
+\index{airlineSubmenu@{airlineSubmenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{airlineSubmenu()}{airlineSubmenu()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Menu\+::airline\+Submenu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_ac0c184d3a4bc1a5a39cacba84425beeb}\label{class_menu_ac0c184d3a4bc1a5a39cacba84425beeb}} 
+\index{Menu@{Menu}!airportMaxYByAirport@{airportMaxYByAirport}}
+\index{airportMaxYByAirport@{airportMaxYByAirport}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{airportMaxYByAirport()}{airportMaxYByAirport()}}
+{\footnotesize\ttfamily void Menu\+::airport\+Max\+YBy\+Airport (\begin{DoxyParamCaption}\item[{string}]{airport,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a23b82d91fb59e35ee41b28da44a7ea2f}\label{class_menu_a23b82d91fb59e35ee41b28da44a7ea2f}} 
+\index{Menu@{Menu}!cityByAirport@{cityByAirport}}
+\index{cityByAirport@{cityByAirport}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{cityByAirport()}{cityByAirport()}}
+{\footnotesize\ttfamily void Menu\+::city\+By\+Airport (\begin{DoxyParamCaption}\item[{string}]{airport }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a7af89bcbe56b07d2520b64671fce52a6}\label{class_menu_a7af89bcbe56b07d2520b64671fce52a6}} 
+\index{Menu@{Menu}!flightsByAirport@{flightsByAirport}}
+\index{flightsByAirport@{flightsByAirport}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{flightsByAirport()}{flightsByAirport()}}
+{\footnotesize\ttfamily void Menu\+::flights\+By\+Airport (\begin{DoxyParamCaption}\item[{string}]{airport }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a45c46b7c959211a176f7c016c1fedd0d}\label{class_menu_a45c46b7c959211a176f7c016c1fedd0d}} 
+\index{Menu@{Menu}!inputTest@{inputTest}}
+\index{inputTest@{inputTest}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{inputTest()}{inputTest()}}
+{\footnotesize\ttfamily bool Menu\+::input\+Test (\begin{DoxyParamCaption}\item[{char}]{choice,  }\item[{vector$<$ int $>$}]{values }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a57b1e70b5b6c80b3feee887713b952a5}\label{class_menu_a57b1e70b5b6c80b3feee887713b952a5}} 
+\index{Menu@{Menu}!pathByAirport@{pathByAirport}}
+\index{pathByAirport@{pathByAirport}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{pathByAirport()}{pathByAirport()}}
+{\footnotesize\ttfamily void Menu\+::path\+By\+Airport (\begin{DoxyParamCaption}\item[{string}]{src\+Airport,  }\item[{string}]{dest\+Airport,  }\item[{vector$<$ string $>$}]{airlines }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a9466336c8e9bad3445837ba61fc5e392}\label{class_menu_a9466336c8e9bad3445837ba61fc5e392}} 
+\index{Menu@{Menu}!pathByCity@{pathByCity}}
+\index{pathByCity@{pathByCity}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{pathByCity()}{pathByCity()}}
+{\footnotesize\ttfamily void Menu\+::path\+By\+City (\begin{DoxyParamCaption}\item[{string}]{src\+City,  }\item[{string}]{src\+Country,  }\item[{string}]{dest\+City,  }\item[{string}]{dest\+Country,  }\item[{vector$<$ string $>$}]{airlines }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a0b90a23fb11a5bda11a8e89db2995558}\label{class_menu_a0b90a23fb11a5bda11a8e89db2995558}} 
+\index{Menu@{Menu}!pathByCoordinates@{pathByCoordinates}}
+\index{pathByCoordinates@{pathByCoordinates}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{pathByCoordinates()}{pathByCoordinates()}}
+{\footnotesize\ttfamily void Menu\+::path\+By\+Coordinates (\begin{DoxyParamCaption}\item[{double}]{src\+Lati,  }\item[{double}]{src\+Longi,  }\item[{double}]{dest\+Lati,  }\item[{double}]{des\+Longi,  }\item[{vector$<$ string $>$}]{airlines }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_menu_a35656cd130e24d69383a5c9d0a73a38c}\label{class_menu_a35656cd130e24d69383a5c9d0a73a38c}} 
+\index{Menu@{Menu}!run@{run}}
+\index{run@{run}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Menu\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

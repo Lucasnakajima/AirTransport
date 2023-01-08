@@ -1,0 +1,46 @@
+\hypertarget{_database_8h_source}{}\doxysection{Database.\+h}
+\label{_database_8h_source}\index{Classes/Database.h@{Classes/Database.h}}
+\mbox{\hyperlink{_database_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Utilizador on 26-\/Dec-\/22.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AIRTRANSPORT\_DATABASE\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AIRTRANSPORT\_DATABASE\_H}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_airport_8h}{Airport.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_airline_8h}{Airline.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_graph_8h}{Graph.h}}"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <unordered\_set>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}list"{}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_database}{Database}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{private}:}
+\DoxyCodeLine{22     unordered\_map<string, Airport> airports;}
+\DoxyCodeLine{23     unordered\_set<Airline, Airline\_hash> airlines;}
+\DoxyCodeLine{24     \mbox{\hyperlink{class_graph}{Graph}} Everything;}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_database_aa0f1bb3df6528683af020ba55bb640e6}{readAirports}}();}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_database_a0d023d1c581fe9546eaddb0ae7a655f7}{readAirlines}}();}
+\DoxyCodeLine{30     \mbox{\hyperlink{class_database_a4703c80e6969d33565ea340f768fdadf}{Database}}();}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_database_a279a05ea250c5fb6c30d0c818fb7be8e}{graphEverything}}();}
+\DoxyCodeLine{33     vector<vector<vector<string>>> \mbox{\hyperlink{class_database_a7a44b6bdb3e2997c1d5d7741205dd360}{path}}(\textcolor{keywordtype}{string} src, \textcolor{keywordtype}{string} dest, vector<string>\& airlines);}
+\DoxyCodeLine{34     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_database_a7ef51f245e1fba51d588cf322290383e}{coordsdist}}(\textcolor{keywordtype}{double} lat1, \textcolor{keywordtype}{double} lon1, \textcolor{keywordtype}{double} lat2, \textcolor{keywordtype}{double} lon2);}
+\DoxyCodeLine{36     vector<vector<vector<string>>>\mbox{\hyperlink{class_database_ac2c2b43ec07aa92cce5c6bc08e9221fc}{cityPath}}(\textcolor{keywordtype}{string} srcCity, \textcolor{keywordtype}{string} srcCountry, \textcolor{keywordtype}{string} destCity, \textcolor{keywordtype}{string} destCountry, vector<string> \&airlines);}
+\DoxyCodeLine{38     vector<vector<vector<string>>> \mbox{\hyperlink{class_database_a0673f38a83f2e45526f6e96b3edf5d58}{coordsPath}}(\textcolor{keywordtype}{double} srcLati, \textcolor{keywordtype}{double} srcLongi, \textcolor{keywordtype}{double} destLati, \textcolor{keywordtype}{double} destLongi, vector<string>\& airlines);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     unordered\_set<string> \mbox{\hyperlink{class_database_a570a58fc4d8c61b48c92695e95b22466}{airportMaxY}}(\textcolor{keywordtype}{string} airport, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     unordered\_set<string> \mbox{\hyperlink{class_database_a8b4f8f1b18bdd72d8f0e44699c62f4b8}{airportList}}(\textcolor{keywordtype}{string} airport, \textcolor{keywordtype}{int} code);}
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AIRTRANSPORT\_DATABASE\_H}}
+
+\end{DoxyCode}

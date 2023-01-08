@@ -1,0 +1,79 @@
+\hypertarget{_graph_8h_source}{}\doxysection{Graph.\+h}
+\label{_graph_8h_source}\index{Classes/Graph.h@{Classes/Graph.h}}
+\mbox{\hyperlink{_graph_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by Utilizador on 26-\/Dec-\/22.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef AIRTRANSPORT\_GRAPH\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define AIRTRANSPORT\_GRAPH\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <bits/stdc++.h>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_airport_8h}{Airport.h}}"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_airline_8h}{Airline.h}}"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{class_graph}{Graph}} \{}
+\DoxyCodeLine{19     \textcolor{keyword}{struct }destination\{}
+\DoxyCodeLine{20         \textcolor{keywordtype}{int} src;}
+\DoxyCodeLine{21         vector<string> Airlines;}
+\DoxyCodeLine{22     \};}
+\DoxyCodeLine{23     \textcolor{keyword}{struct }Edge \{}
+\DoxyCodeLine{24         \textcolor{keywordtype}{int} dest;   \textcolor{comment}{// Destination node}}
+\DoxyCodeLine{25         \textcolor{keywordtype}{int} weight; \textcolor{comment}{// An integer weight}}
+\DoxyCodeLine{26         vector<string> Airlines;}
+\DoxyCodeLine{27     \};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keyword}{struct }Node \{}
+\DoxyCodeLine{30         unordered\_map<int,Edge> adj; \textcolor{comment}{// The list of outgoing edges (to adjacent nodes)}}
+\DoxyCodeLine{31         \textcolor{keywordtype}{bool} visited;\textcolor{comment}{// Has the node been visited on a search?}}
+\DoxyCodeLine{32         \textcolor{keywordtype}{int} color;}
+\DoxyCodeLine{33         \textcolor{keywordtype}{int} distance;}
+\DoxyCodeLine{34         \mbox{\hyperlink{class_airport}{Airport}} airport;}
+\DoxyCodeLine{35     \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordtype}{int} n;              \textcolor{comment}{// Graph size (vertices are numbered from 1 to n)}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} hasDir;        \textcolor{comment}{// false: undirected; true: directed}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 \textcolor{keyword}{public}:}
+\DoxyCodeLine{41     vector<Node> \mbox{\hyperlink{class_graph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}; \textcolor{comment}{// The list of nodes being represented}}
+\DoxyCodeLine{42     \textcolor{comment}{// Constructor: nr nodes and direction (default: undirected)}}
+\DoxyCodeLine{43     \mbox{\hyperlink{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}, \textcolor{keywordtype}{bool} dir = \textcolor{keyword}{false});}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \mbox{\hyperlink{class_graph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}();}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49     \textcolor{comment}{// Add edge from source to destination with a certain weight}}
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a2772be5455ed6e89faa0b9dcf065fbee}{addEdge}}(\textcolor{keywordtype}{string} src, \textcolor{keywordtype}{string} dest, \textcolor{keywordtype}{string} comp, \textcolor{keywordtype}{int} weight = 1);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{comment}{// Depth-\/First Search: example implementation}}
+\DoxyCodeLine{53     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_af81888a45922aa1839fe0262bd0ca7b3}{dfs}}(\textcolor{keywordtype}{int} v);}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a37bf7aa7a8e6259bfc939b4e5a6f99d1}{dfsTopo}}(\textcolor{keywordtype}{int} v, list<int>\& order);}
+\DoxyCodeLine{55     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a123f0ac78e14c525497eca977c236203}{outDegree}}(\textcolor{keywordtype}{int} v);}
+\DoxyCodeLine{56     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_aa341bdb6c57f4bae29d0e90aa0fc84a4}{weightedOutDegree}}(\textcolor{keywordtype}{int} v);}
+\DoxyCodeLine{57     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a684873414628f08f55ed4a08e9172255}{connectedComponents}}();}
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a48592906cce9eba131297fd7bdad844f}{giantComponent}}();}
+\DoxyCodeLine{59     list<int> \mbox{\hyperlink{class_graph_ab84a96704f2cd38df55fac039953f913}{topologicalSorting}}();}
+\DoxyCodeLine{60     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_graph_a6fcbfa381804b43a67d92eed7f30e1d9}{hasCycle}}();}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a36bd8f9d839cfe315e22fab857bf6e70}{dfsGC}}(\textcolor{keywordtype}{int} v);}
+\DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a280196f0e6fe399da8bbd1cee77df099}{dfsCycle}}(\textcolor{keywordtype}{int} v, \textcolor{keywordtype}{int}\& count);}
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_ae1e45e27c60711dadec619ca17e830a4}{bfs}}(\textcolor{keywordtype}{int} v);}
+\DoxyCodeLine{65     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a7355a8f413625187e8dafd50ab0223f1}{maxbfs}}(\textcolor{keywordtype}{int} v);}
+\DoxyCodeLine{66     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a7f5e6f631885d3e73dbfdbc3f4daef35}{distance}}(\textcolor{keywordtype}{string} a, \textcolor{keywordtype}{string} b);}
+\DoxyCodeLine{67     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_graph_a6fc336837e93d78a359a21778cbf7c8f}{diameter}}();}
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a3899a44b8fa67754204feb3a9279e2a1}{bfsPath}}(vector<int> parent[], \textcolor{keywordtype}{int} src, vector<string>\& airlines);}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_graph_a29e1e3e1c1a1dbd5c95407999f03363d}{find\_paths}}(vector<vector<string>>\& paths, vector<string>\& path, vector<int> parent[], \textcolor{keywordtype}{int} dest);}
+\DoxyCodeLine{70 \};}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//AIRTRANSPORT\_GRAPH\_H}}
+
+\end{DoxyCode}
